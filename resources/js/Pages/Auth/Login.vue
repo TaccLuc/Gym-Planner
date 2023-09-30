@@ -20,7 +20,7 @@ const submit = () => {
         <Head title="Welcome" />
 
         <form @submit.prevent="submit" class="xl:px-7 mb-5">
-            <div class="xl:text-left">
+            <div>
                 
                 <input
                     id="email"
