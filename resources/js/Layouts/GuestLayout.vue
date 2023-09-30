@@ -10,7 +10,7 @@
 
         <div class="absolute inset-0 flex flex-wrap items-center justify-center bg-black bg-opacity-50 h-screen w-screen text-center">
             
-            <div class="bg-zinc-700 bg-opacity-40 rounded-3xl w-4/5 md:w-3/5 lg:w-2/5 text-white py-5 px-2">
+            <div class="bg-stone-800 bg-opacity-40 rounded-3xl w-4/5 md:w-3/6 lg:w-2/6 text-white py-5 px-2 h-[270px] md:h-[350] lg:h-[400px]">
                 <div class="h-[130px] md:h-[150px] lg:h-[200px] mb-10">
                     <img src="/images/logo.png" alt="Logo" class="object-contain h-full w-full">
                 </div>
