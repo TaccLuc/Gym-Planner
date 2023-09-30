@@ -8,10 +8,16 @@ import GuestLayout from '../Layouts/GuestLayout.vue';
     <GuestLayout>
         <Head title="Welcome"/>
         <div>
-            <Link  href="/login">
+            <h3>
+                Already have an account?
+            </h3>
+            <Link  href="/login" class="text-lg border border-white py-1 px-3 rounded-full bg-white bg-opacity-10">
                 Login
             </Link>
-            <Link href="route('register')">
+            <h3>
+                Or you can create a new one
+            </h3>
+            <Link href="/register" class="text-lg border border-white py-1 px-3 rounded-full bg-white bg-opacity-10">
                 Register
             </Link>
         </div>
