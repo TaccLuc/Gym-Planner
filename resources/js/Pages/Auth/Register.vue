@@ -1,6 +1,7 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import FormInput from '../../Components/FormInput.vue';
+import InputError from '@/Components/InputError.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -18,8 +19,9 @@ const submit = () => {
 </script>
 
 <template>
+    <Head title="Register" />
+    
     <GuestLayout>
-        <Head title="Register" />
 
         <form @submit.prevent="submit" class="xl:px-7 text-left">
 
@@ -35,7 +37,7 @@ const submit = () => {
                     autocomplete="name"
                     placeholder="Name"
                 />
-
+                <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
             <div class="mb-6">
@@ -49,7 +51,7 @@ const submit = () => {
                     autocomplete="username"
                     placeholder="Email"
                 />
-
+                <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="mb-6">
@@ -63,7 +65,7 @@ const submit = () => {
                     autocomplete="new-password"
                     placeholder="Password"
                 />
-
+                <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
             <div class="mb-6">
@@ -77,7 +79,7 @@ const submit = () => {
                     autocomplete="new-password"
                     placeholder="Confirm Password"
                 />
-
+                <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
             <div class="mt-6 text-center">
@@ -88,7 +90,7 @@ const submit = () => {
                 </button>
 
                 <Link
-                :href="route('login')"
+                :href="route('/')"
                 class="underline text-gray-300 text-sm hover:text-gray-100"
                 >
                     Already registered?

@@ -5,7 +5,12 @@ import { Head } from '@inertiajs/vue3';
 
 <template>
     <Head title="Planner" />
+    
     <AuthenticatedLayout>
-        CIAO
+
+        <div class="text-red">
+            CIAO
+        </div>
+        
     </AuthenticatedLayout>
 </template>

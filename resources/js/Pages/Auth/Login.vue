@@ -1,5 +1,6 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import InputError from '@/Components/InputError.vue';
 import FormInput from '../../Components/FormInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
@@ -17,8 +18,9 @@ const submit = () => {
 </script>
 
 <template>
+    <Head title="Welcome" />
+    
     <GuestLayout>
-        <Head title="Welcome" />
 
         <form @submit.prevent="submit" class="xl:px-7 mb-5">
             <div>
@@ -32,7 +34,6 @@ const submit = () => {
                     autocomplete="username"
                     placeholder="Email"
                 />
-                
             </div>
 
             <div class="mt-4 xl:text-left">
@@ -45,7 +46,8 @@ const submit = () => {
                     autocomplete="current-password"
                     placeholder="Password"
                 />
-
+                
+                <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="block mt-4 ml-1">

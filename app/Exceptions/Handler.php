@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\Request;
 
 class Handler extends ExceptionHandler
 {
@@ -25,6 +27,12 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        $this->renderable(function (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e, Request $request) {
+            return Inertia::render('Error', ['status' => $e->getStatusCode(), 'message' => $e->getMessage()])
+                ->toResponse($request)
+                ->setStatusCode($e->getStatusCode());
         });
     }
 }
