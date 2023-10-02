@@ -90,7 +90,7 @@ const submit = () => {
                 </button>
 
                 <Link
-                :href="route('/')"
+                :href="route('login')"
                 class="underline text-gray-300 text-sm hover:text-gray-100"
                 >
                     Already registered?
