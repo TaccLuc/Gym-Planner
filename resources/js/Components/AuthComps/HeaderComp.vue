@@ -28,7 +28,7 @@ const menuToggle = () => {
 
         <div :class="{'h-0' : hidden, 'h-44' : !hidden}" class="overflow-hidden transition-all duration-1000 ease-in-out lg:h-[calc(100vh-200px)]">
             <nav class="h-full">
-                <ul class="mt-2 flex flex-col space-y-2.5 h-full relative">
+                <ul class="mt-2 flex flex-col space-y-2.5 h-full lg:relative">
                     <NavLi>
                         <span class="px-4 block cursor-pointer">
                             Prova
@@ -39,7 +39,7 @@ const menuToggle = () => {
                             Test
                         </span>
                     </NavLi>
-                    <NavLi class="absolute bottom-6">
+                    <NavLi class="lg:absolute lg:bottom-6">
                         <Link :href="route('logout')" method="post" as="button" class="px-4 w-full text-left">
                             Logout 
                             <i class="fa-solid fa-right-from-bracket ps-4 text-red-500"></i>
