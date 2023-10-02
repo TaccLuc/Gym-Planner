@@ -1,5 +1,6 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import FormInput from '../../Components/FormInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -21,14 +22,13 @@ const submit = () => {
         <Head title="Register" />
 
         <form @submit.prevent="submit" class="xl:px-7 text-left">
-            <div>
-                <label for="name" class="text-xs">
-                    Name
-                </label>
-                <input
+
+            <div class="mb-6">
+
+                <FormInput
                     id="name"
                     type="text"
-                    class="mt-1 h-[35px] block w-full text-black rounded border-none focus:ring-red-700"
+                    class="h-[35px]"
                     v-model="form.name"
                     required
                     autofocus
@@ -38,14 +38,12 @@ const submit = () => {
 
             </div>
 
-            <div class="mt-2">
-                <label for="email" class="text-xs">
-                    Email
-                </label>
-                <input
+            <div class="mb-6">
+               
+                <FormInput
                     id="email"
                     type="email"
-                    class="mt-1 h-[35px] block w-full text-black rounded border-none focus:ring-red-700"
+                    class="h-[35px]"
                     v-model="form.email"
                     required
                     autocomplete="username"
@@ -54,14 +52,12 @@ const submit = () => {
 
             </div>
 
-            <div class="mt-2">
-                <label for="password" class="text-xs">
-                    Password
-                </label>
-                <input
+            <div class="mb-6">
+                
+                <FormInput
                     id="password"
                     type="password"
-                    class="mt-1 h-[35px] block w-full text-black rounded border-none focus:ring-red-700"
+                    class="h-[35px]"
                     v-model="form.password"
                     required
                     autocomplete="new-password"
@@ -70,14 +66,12 @@ const submit = () => {
 
             </div>
 
-            <div class="mt-2">
-                <label for="password_confirmation" class="text-xs">
-                    Confirm Password
-                </label>
-                <input
+            <div class="mb-6">
+               
+                <FormInput
                     id="password_confirmation"
                     type="password"
-                    class="mt-1 h-[35px] block w-full text-black rounded border-none focus:ring-red-700"
+                    class="h-[35px]"
                     v-model="form.password_confirmation"
                     required
                     autocomplete="new-password"

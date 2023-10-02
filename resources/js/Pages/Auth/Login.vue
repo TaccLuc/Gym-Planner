@@ -1,5 +1,6 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import FormInput from '../../Components/FormInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -22,25 +23,23 @@ const submit = () => {
         <form @submit.prevent="submit" class="xl:px-7 mb-5">
             <div>
                 
-                <input
+                <FormInput
                     id="email"
                     type="email"
-                    class="mt-1 block w-full text-black rounded border-none focus:ring-red-700"
                     v-model="form.email"
                     required
                     autofocus
                     autocomplete="username"
                     placeholder="Email"
                 />
-
+                
             </div>
 
             <div class="mt-4 xl:text-left">
             
-                <input
+                <FormInput
                     id="password"
                     type="password"
-                    class="mt-1 block w-full text-black rounded border-none focus:ring-red-700"
                     v-model="form.password"
                     required
                     autocomplete="current-password"
@@ -64,12 +63,6 @@ const submit = () => {
                     Login
                 </button>
                 
-                <Link
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-300 block lg:w-2/5 lg:mx-auto hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Forgot your password?
-                </Link>
             </div>
 
         </form>
