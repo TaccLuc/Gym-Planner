@@ -12,7 +12,7 @@ const menuToggle = () => {
 </script>
 
 <template>
-    <header class="bg-black bg-opacity-80 text-white lg:h-screen">
+    <header class="bg-black bg-opacity-80 text-white lg:h-screen z-10">
 
         <div class="flex justify-between items-center border-b-2 px-4 py-3 lg:justify-center lg:py-5 lg:h-[200px]">
             <div class="w-[70px] border border-2 border-white rounded-full pb-1 px-1 lg:w-[150px] lg:pb-3 lg:px-3 lg:bg-gray-300 lg:bg-opacity-70">
@@ -26,7 +26,7 @@ const menuToggle = () => {
             </button>
         </div>
 
-        <div :class="{'h-0' : hidden, 'h-44' : !hidden}" class="overflow-hidden transition-all duration-1000 ease-in-out lg:h-[calc(100vh-200px)]">
+        <div :class="{'h-0' : hidden, 'h-44' : !hidden}" class="absolute bg-black bg-opacity-80 z-10 overflow-hidden transition-all duration-1000 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-200px)]">
             <nav class="h-full">
                 <ul class="mt-2 flex flex-col space-y-2.5 h-full lg:relative">
                     <NavLi>

@@ -8,8 +8,10 @@ import { Head } from '@inertiajs/vue3';
     
     <AuthenticatedLayout>
 
-        <div class="text-red">
-            CIAO
+        <div class="w-full h-screen flex justify-center items-center">
+            <H1>
+                PLANNER
+            </H1>
         </div>
         
     </AuthenticatedLayout>
