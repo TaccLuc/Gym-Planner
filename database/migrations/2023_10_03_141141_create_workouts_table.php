@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('workouts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                     ->references('id')

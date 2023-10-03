@@ -15,7 +15,7 @@ class WorkoutController extends Controller
      */
     public function index()
     {
-
+        return Inertia::render('Error', ['status' => 404]);
     }
 
     /**
@@ -23,7 +23,7 @@ class WorkoutController extends Controller
      */
     public function create()
     {
-        //
+    
     }
 
     /**
@@ -37,9 +37,13 @@ class WorkoutController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Workout $workout)
+    public function show(String $slug)
     {
-        //
+        $workout = Workout::where('slug', $slug)->firstOrFail();
+
+        return Inertia::render('Workouts/Show', [
+            'workout' => $workout
+        ]);
     }
 
     /**

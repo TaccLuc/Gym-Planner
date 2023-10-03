@@ -11,10 +11,7 @@ class PlannerController extends Controller
 {
     public function index() {
 
-        $workouts = Workout::all();
-
-        return Inertia::render('Planner', [
-            'workouts' => $workouts
-        ]);
+        return Inertia::render('Planner');
     }
+
 }

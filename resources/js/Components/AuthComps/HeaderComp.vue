@@ -35,12 +35,15 @@ const menuToggle = () => {
         <div :class="{'h-0' : hidden, 'h-44' : !hidden}" class="absolute bg-black bg-opacity-80 z-10 overflow-hidden transition-all duration-1000 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-200px)]">
             <nav class="h-full">
                 <ul class="mt-2 flex flex-col space-y-2.5 h-full lg:relative">
-                    <NavLi v-for="workout in workoutsList">
-                        <span class="px-4 block cursor-pointer capitalize">
-                            {{ workout.name }}
-                        </span>
+                    
+                    <NavLi v-for="workout in workoutsList" >
+                        <Link :href="route('workouts.show', workout.slug)">
+                            <span class="px-4 block cursor-pointer capitalize">
+                                {{ workout.name }}
+                            </span>
+                        </Link>
                     </NavLi>
-
+                    
                     <NavLi class="lg:absolute lg:bottom-6">
                         <Link :href="route('logout')" method="post" as="button" class="px-4 w-full text-left">
                             Logout 
