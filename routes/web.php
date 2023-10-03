@@ -10,6 +10,12 @@ use Inertia\Inertia;
 
 // Controllers
 use App\Http\Controllers\Users\PlannerController;
+use App\Http\Controllers\MovementController;
+use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\DayController;
+use App\Http\Controllers\WorkoutController;
+use App\Models\Users\Exercise;
+use App\Models\Users\Movement;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +38,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/planner', [PlannerController::class, 'index'])->name('planner');
+
+    Route::resource('movements', Movement::class);
+    Route::resource('exercises', Exercise::class);
+    Route::resource('days', Day::class);
+    Route::resource('workouts', Workout::class);
 });
 
 require __DIR__.'/auth.php';

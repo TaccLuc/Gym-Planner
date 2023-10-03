@@ -2,9 +2,14 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
+
+use App\Models\Users\Workout;
+use App\Models\User;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -39,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
+            'workoutsList' => (Auth::user() ? Auth::user()->workouts : null)
         ];
     }
 }

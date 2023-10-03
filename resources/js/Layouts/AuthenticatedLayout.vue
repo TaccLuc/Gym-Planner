@@ -9,7 +9,7 @@ import HeaderComp from '../Components/AuthComps/HeaderComp.vue';
         <div class="lg:col-span-1 xl:col-span-2">
 
             <HeaderComp />
-
+    
         </div>
 
         <div class="lg:col-span-5 xl:col-span-10">
@@ -22,6 +22,8 @@ import HeaderComp from '../Components/AuthComps/HeaderComp.vue';
 <style scoped>
 .bg-image {
     background-image: url('images/bg_mobile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /* 
     Media Queries
@@ -31,6 +33,8 @@ import HeaderComp from '../Components/AuthComps/HeaderComp.vue';
     .md\:bg-image-md {
         
         background-image: url('/public/images/bg_desktop.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 }
 </style>
