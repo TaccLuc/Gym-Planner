@@ -44,7 +44,10 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
-            'workoutsList' => (Auth::user() ? Auth::user()->workouts : null)
+            'workoutsList' => (Auth::user() ? Auth::user()->workouts->map(fn($workout) => [
+                'name' => $workout->name,
+                'slug' => $workout->slug
+            ]) : null)
         ];
     }
 }
