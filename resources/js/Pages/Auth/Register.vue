@@ -4,6 +4,10 @@ import FormInput from '../../Components/FormInput.vue';
 import InputError from '@/Components/InputError.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
+defineOptions({
+    layout: GuestLayout,
+});
+
 const form = useForm({
     name: '',
     email: '',
@@ -20,8 +24,6 @@ const submit = () => {
 
 <template>
     <Head title="Register" />
-    
-    <GuestLayout>
 
         <form @submit.prevent="submit" class="xl:px-7 text-left">
 
@@ -98,5 +100,5 @@ const submit = () => {
 
             </div>
         </form>
-    </GuestLayout>
+
 </template>

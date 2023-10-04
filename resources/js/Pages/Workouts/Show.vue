@@ -2,6 +2,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 
+defineOptions({
+    layout: AuthenticatedLayout,
+});
+
 defineProps({
     workout: Object
 });
@@ -10,8 +14,7 @@ defineProps({
 
 <template>
     <Head title="SingleWorkout" />
-    
-    <AuthenticatedLayout>
+
 
         <main class="w-full h-full flex justify-center items-center">
 
@@ -21,5 +24,4 @@ defineProps({
 
         </main>
         
-    </AuthenticatedLayout>
 </template>

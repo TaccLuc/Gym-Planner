@@ -17,11 +17,11 @@ const menuToggle = () => {
 </script>
 
 <template>
-    <header class="bg-black bg-opacity-80 text-white lg:h-screen z-10 lg:relative">
+    <header class="bg-black bg-opacity-80 text-white lg:h-screen z-10 lg:relative lg:border-e-2 lg:border-black lg:border-opacity-60">
 
-        <div class="flex justify-between items-center border-b-2 px-4 py-3 h-[120px] lg:justify-center lg:py-5 lg:h-[200px]">
+        <div class="flex justify-between items-center border-b-2 border-black border-opacity-60 px-4 py-3 h-[120px] lg:justify-center lg:py-5 lg:h-[200px]">
 
-            <div class="w-[70px] border border-2 border-white rounded-full pb-1 px-1 lg:w-[150px] lg:pb-3 lg:px-3 lg:bg-gray-300 lg:bg-opacity-10">
+            <div class="w-[70px] border border-2 border-black border-opacity-70 rounded-full pb-1 px-1 lg:w-[150px] lg:pb-3 lg:px-3 lg:bg-gray-300 lg:bg-opacity-10">
                 <Link :href="route('planner')" class="pointer">
                     <img src="/images/logo.png" alt="Logo">
                 </Link>

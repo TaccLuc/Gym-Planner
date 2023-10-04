@@ -2,7 +2,7 @@
 import { Head } from '@inertiajs/vue3';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 
-  export default {
+export default {
     props: {
       status: Number,
     },
@@ -10,6 +10,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
         GuestLayout,
         Head
     },
+    layout: GuestLayout,
     computed: {
       title() {
         return {
@@ -28,14 +29,12 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
         }[this.status]
       },
     },
-  }
+}
 </script>
 
 <template>
     <Head :title="title" />
-    
-    <GuestLayout>
-        
+            
         <div>
 
             <h1 class="text-3xl xl:text-6xl mb-3">
@@ -48,7 +47,6 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
 
         </div>
 
-    </GuestLayout>
 </template>
 
 
