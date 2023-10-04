@@ -36,7 +36,7 @@ const menuToggle = () => {
         </button>
         </div>
 
-        <div :class="{'h-0' : hidden, 'h-[calc(100vh-120px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}" class="absolute bg-black bg-opacity-80 z-10 transition-all duration-700 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-270px)]">
+        <div :class="{'h-0' : hidden, 'h-[calc(100vh-120px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}" class="absolute bg-black bg-opacity-80 z-10 transition-all duration-700 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-270px)] lg:opacity-100">
             <nav class="h-full">
                 <ul class="overflow-auto h-[calc(100vh-270px)]">
                     
@@ -69,7 +69,7 @@ const menuToggle = () => {
                 </ul>
                     
                 <!-- Logout Button -->
-                <div class="text-xl active:bg-gray-500 w-screen lg:w-full py-2 border-b group cursor-pointer bg-white bg-opacity-20 absolute bottom-0 h-[70px] border-b-0"
+                <div class="text-xl active:bg-gray-500 w-screen lg:w-full py-2 border-b group cursor-pointer bg-white bg-opacity-20 absolute bottom-0 h-[70px] border-b-0 lg:block"
                     :class="{'hidden' : hidden}"
                 >
         
