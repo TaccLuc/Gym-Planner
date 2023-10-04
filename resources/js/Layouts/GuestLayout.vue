@@ -10,7 +10,7 @@
         <div class="absolute inset-0 flex flex-wrap items-center justify-center bg-black bg-opacity-50 h-screen w-screen text-center">
             
             <div class="bg-stone-800 bg-opacity-40 border-2 border-black border-opacity-60 w-4/5 md:w-3/6 lg:w-2/6 text-white py-5 px-2">
-                <div class="h-[150px] md:h-[150px] lg:h-[200px] mb-5 bg-gray-300 bg-opacity-10 border-2 border-black border-opacity-70 rounded-full w-fit px-4 pb-4 pt-1 mx-auto lg:pb-5">
+                <div class="h-[150px] md:h-[150px] lg:h-[200px] mb-5 bg-gray-200 bg-opacity-20 rounded-full w-fit px-4 pb-4 pt-1 mx-auto lg:pb-5">
                     <img src="/images/logo.png" alt="Logo" class="object-contain h-full w-full">
                 </div>
                 <slot />
@@ -25,7 +25,7 @@
 <style scoped>
 
 .bg-image {
-    background-image: url('images/gym_mobile.jpg');
+    background-image: url('/public/images/gym_mobile.jpg');
 }
 
 .my-animation {
