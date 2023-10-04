@@ -5,14 +5,14 @@ import HeaderComp from '../Components/AuthComps/HeaderComp.vue';
 
 <template>
 
-    <div class="min-h-screen lg:grid lg:grid-cols-6 xl:grid-cols-12 bg-image md:bg-image-md">
+    <div class="max-h-screen bg-image lg:grid lg:grid-cols-6 xl:grid-cols-12 ">
         <div class="lg:col-span-1 xl:col-span-2">
 
             <HeaderComp />
     
         </div>
 
-        <div class="lg:col-span-5 xl:col-span-10">
+        <div class="h-[calc(100vh-120px)]  lg:h-screen lg:col-span-5 xl:col-span-10">
             <slot />
         </div>
     </div>
@@ -21,20 +21,9 @@ import HeaderComp from '../Components/AuthComps/HeaderComp.vue';
 
 <style scoped>
 .bg-image {
-    background-image: url('images/bg_mobile.jpg');
+    background-image: url('/public/images/bg_desktop.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
-/* 
-    Media Queries
-*/
 
-@media (min-width: 768px) {
-    .md\:bg-image-md {
-        
-        background-image: url('/public/images/bg_desktop.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-}
 </style>

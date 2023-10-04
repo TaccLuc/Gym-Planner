@@ -17,11 +17,11 @@ const menuToggle = () => {
 </script>
 
 <template>
-    <header class="bg-black bg-opacity-80 text-white lg:h-screen z-10">
+    <header class="bg-black bg-opacity-80 text-white lg:h-screen z-10 lg:relative">
 
-        <div class="flex justify-between items-center border-b-2 px-4 py-3 lg:justify-center lg:py-5 lg:h-[200px]">
+        <div class="flex justify-between items-center border-b-2 px-4 py-3 h-[120px] lg:justify-center lg:py-5 lg:h-[200px]">
 
-            <div class="w-[70px] border border-2 border-white rounded-full pb-1 px-1 lg:w-[150px] lg:pb-3 lg:px-3 lg:bg-gray-300 lg:bg-opacity-70">
+            <div class="w-[70px] border border-2 border-white rounded-full pb-1 px-1 lg:w-[150px] lg:pb-3 lg:px-3 lg:bg-gray-300 lg:bg-opacity-10">
                 <Link :href="route('planner')" class="pointer">
                     <img src="/images/logo.png" alt="Logo">
                 </Link>
@@ -32,22 +32,28 @@ const menuToggle = () => {
             </button>
         </div>
 
-        <div :class="{'h-0' : hidden, 'h-44' : !hidden}" class="absolute bg-black bg-opacity-80 z-10 overflow-hidden transition-all duration-1000 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-200px)]">
+        <div :class="{'h-0' : hidden, 'h-[calc(100vh-120px)]' : !hidden}" class="absolute bg-black bg-opacity-80 z-10 overflow-auto transition-all duration-1000 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-270px)]">
             <nav class="h-full">
-                <ul class="mt-2 flex flex-col space-y-2.5 h-full lg:relative">
+                <ul class="flex flex-col h-full">
                     
-                    <NavLi v-for="workout in workoutsList" >
+                    <NavLi v-for="workout in workoutsList">
                         <Link :href="route('workouts.show', workout.slug)">
-                            <span class="px-4 block cursor-pointer capitalize">
-                                {{ workout.name }}
-                            </span>
+                            <div class="px-4 block capitalize flex">
+                                <span class="grow">
+                                    {{ workout.name }}
+                                </span>
+                                <span class="flex-none">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </div>
                         </Link>
                     </NavLi>
                     
-                    <NavLi class="lg:absolute lg:bottom-6">
-                        <Link :href="route('logout')" method="post" as="button" class="px-4 w-full text-left">
+                    
+                    <NavLi class="bg-white bg-opacity-20 lg:absolute lg:bottom-0 lg:h-[70px]">
+                        <Link :href="route('logout')" method="post" as="button" class="p-4 w-full text-left">
+                            <i class="fa-solid fa-right-from-bracket me-2 text-red-500"></i>
                             Logout 
-                            <i class="fa-solid fa-right-from-bracket ps-4 text-red-500"></i>
                         </Link>
                     </NavLi>
                 </ul>

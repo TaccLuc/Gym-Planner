@@ -15,6 +15,7 @@ export default {
             fontFamily: {
                 sans: ['Roboto', ...defaultTheme.fontFamily.sans],
             },
+            width: ['group-hover']
         }
     },
 
