@@ -39,23 +39,30 @@ const menuToggle = () => {
         <div :class="{'h-0' : hidden, 'h-[calc(100vh-120px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}" class="absolute bg-black bg-opacity-80 z-10 transition-all duration-700 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-270px)] lg:opacity-100">
             <nav class="h-full">
                 <ul class="overflow-auto h-[calc(100vh-270px)]">
-                    
+                    <!-- Rep Maxes -->
+                    <NavLi>
+                        Rep Max
+                    </NavLi>
+
                     <!-- Workouts Toggle -->
-                    <NavLi @click="navToggle" class="relative">
-                        <div class="px-4 block capitalize flex">
-                                <span class="grow">
-                                    My workouts
-                                </span>
-                                <span class="flex-none transition-all duration-600 ease-linear" :class="{'-rotate-180' :!hiddenNav}">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                </span>
-                            </div>
+                    <NavLi @click="navToggle">
+                        
+                        <div class="flex">
+                            <span class="grow">
+                                My workouts
+                            </span>
+                            <span class="flex-none transition-all duration-600 ease-linear" :class="{'-rotate-180' :!hiddenNav}">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                        </div>
+                        
                     </NavLi>
 
                     <!-- Workouts cycle -->
-                    <NavLi v-for="workout in workoutsList" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav}" class="overflow-hidden relative">
+                    <NavLi v-for="workout in workoutsList" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav}" class="overflow-hidden">
                         <Link :href="route('workouts.show', workout.slug)">
-                            <div class="px-4 block capitalize flex">
+                            
+                            <div class="flex">
                                 <span class="grow">
                                     {{ workout.name }}
                                 </span>
@@ -63,6 +70,7 @@ const menuToggle = () => {
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </span>
                             </div>
+                            
                         </Link>
                     </NavLi>
                     
