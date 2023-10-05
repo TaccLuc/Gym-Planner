@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
-use App\Models\Users\Movement;
-use App\Http\Requests\StoreMovementRequest;
-use App\Http\Requests\UpdateMovementRequest;
+use App\Models\Users\Day;
+use App\Http\Requests\StoreDayRequest;
+use App\Http\Requests\UpdateDayRequest;
+use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 
-class MovementController extends Controller
+class DayController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class MovementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMovementRequest $request)
+    public function store(StoreDayRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class MovementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Movement $movement)
+    public function show(Day $day)
     {
         //
     }
@@ -43,7 +45,7 @@ class MovementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Movement $movement)
+    public function edit(Day $day)
     {
         //
     }
@@ -51,7 +53,7 @@ class MovementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMovementRequest $request, Movement $movement)
+    public function update(UpdateDayRequest $request, Day $day)
     {
         //
     }
@@ -59,7 +61,7 @@ class MovementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Movement $movement)
+    public function destroy(Day $day)
     {
         //
     }

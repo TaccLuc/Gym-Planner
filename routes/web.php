@@ -10,9 +10,9 @@ use Inertia\Inertia;
 
 // Controllers
 use App\Http\Controllers\Users\PlannerController;
-use App\Http\Controllers\MovementController;
-use App\Http\Controllers\ExerciseController;
-use App\Http\Controllers\DayController;
+use App\Http\Controllers\Users\MovementController;
+use App\Http\Controllers\Users\ExerciseController;
+use App\Http\Controllers\Users\DayController;
 use App\Http\Controllers\Users\WorkoutController;
 
 /*
@@ -40,12 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('exercises', ExerciseController::class);
     Route::resource('days', DayController::class);
     Route::resource('workouts', WorkoutController::class)->parameters(['slug' => 'slug']);
-    // Route::prefix('planner')
-    //         ->name('planner.')
-    //         ->group(function() {
-                
 
-    // });
 });
 
 require __DIR__.'/auth.php';

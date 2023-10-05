@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers\Users;
 
-use App\Models\Users\Workout;
-use App\Http\Requests\StoreWorkoutRequest;
-use App\Http\Requests\UpdateWorkoutRequest;
+use App\Models\Users\Movement;
+use App\Http\Requests\StoreMovementRequest;
+use App\Http\Requests\UpdateMovementRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
-class WorkoutController extends Controller
+
+class MovementController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render('Error', ['status' => 404]);
+        
+        $movements = Movement::where('user_id', Auth::id())->get();
+        return Inertia::render('Movements/Index', compact('movements'));
+        
     }
 
     /**
@@ -23,13 +28,13 @@ class WorkoutController extends Controller
      */
     public function create()
     {
-    
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreWorkoutRequest $request)
+    public function store(StoreMovementRequest $request)
     {
         //
     }
@@ -37,17 +42,15 @@ class WorkoutController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(String $slug)
+    public function show(Movement $movement)
     {
-        $workout = Workout::where('slug', $slug)->firstOrFail();
-
-        return Inertia::render('Workouts/Show', compact('workouts'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Workout $workout)
+    public function edit(Movement $movement)
     {
         //
     }
@@ -55,7 +58,7 @@ class WorkoutController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateWorkoutRequest $request, Workout $workout)
+    public function update(UpdateMovementRequest $request, Movement $movement)
     {
         //
     }
@@ -63,7 +66,7 @@ class WorkoutController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Workout $workout)
+    public function destroy(Movement $movement)
     {
         //
     }

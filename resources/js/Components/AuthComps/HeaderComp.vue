@@ -3,7 +3,6 @@ import NavLi from '../NavLi.vue';
 import {Link, usePage} from '@inertiajs/vue3';
 import { ref } from 'vue';
 
-
 const page = usePage();
 const workoutsList = ref(page.props.workoutsList);
 const user = ref(page.props.auth.user);
@@ -41,7 +40,9 @@ const menuToggle = () => {
                 <ul class="overflow-auto h-[calc(100vh-270px)]">
                     <!-- Rep Maxes -->
                     <NavLi>
-                        Set Rep Max
+                        <Link :href="route('movements.index')">
+                            Personal Records
+                        </Link>
                     </NavLi>
 
                     <!-- Create Workout -->
