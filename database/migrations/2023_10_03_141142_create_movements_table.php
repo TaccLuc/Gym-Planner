@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('movements', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedTinyInteger('rep_max');
+            $table->unsignedTinyInteger('reps');
+            $table->unsignedTinyInteger('max_weight');
             $table->timestamps();
         });
     }

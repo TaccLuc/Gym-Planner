@@ -41,11 +41,17 @@ const menuToggle = () => {
                 <ul class="overflow-auto h-[calc(100vh-270px)]">
                     <!-- Rep Maxes -->
                     <NavLi>
-                        Rep Max
+                        Set Rep Max
+                    </NavLi>
+
+                    <!-- Create Workout -->
+                    <NavLi>
+                        + Add a workout
                     </NavLi>
 
                     <!-- Workouts Toggle -->
-                    <NavLi @click="navToggle">
+                    <template v-if="workoutsList.length > 0">
+                        <NavLi @click="navToggle">
                         
                         <div class="flex">
                             <span class="grow">
@@ -56,7 +62,8 @@ const menuToggle = () => {
                             </span>
                         </div>
                         
-                    </NavLi>
+                        </NavLi>
+                    </template>
 
                     <!-- Workouts cycle -->
                     <NavLi v-for="workout in workoutsList" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav}" class="overflow-hidden">

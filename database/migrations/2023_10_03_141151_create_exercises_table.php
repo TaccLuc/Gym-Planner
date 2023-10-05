@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('reps')->nullable();
             $table->unsignedTinyInteger('percentage')->nullable();
             $table->unsignedSmallInteger('weight')->nullable();
-            $table->unsignedBigInteger('movement_id');
+            $table->unsignedBigInteger('movement_id')->nullable();
             $table->foreign('movement_id')
                     ->references('id')
                     ->on('movements')
