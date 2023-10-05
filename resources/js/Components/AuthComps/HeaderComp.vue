@@ -20,7 +20,7 @@ const menuToggle = () => {
 </script>
 
 <template>
-    <header class="bg-black bg-opacity-80 text-white z-10 lg:h-screen lg:relative lg:border-e-2 lg:border-black lg:border-opacity-60">
+    <header class="bg-black bg-opacity-90 text-white z-10 lg:h-screen lg:relative lg:border-e-2 lg:border-black lg:border-opacity-60">
 
         <div class="flex justify-between items-center border-b-2 border-black border-opacity-60 px-4 py-3 h-[120px] lg:justify-center lg:py-5 lg:h-[200px]">
 
@@ -35,7 +35,7 @@ const menuToggle = () => {
         </button>
         </div>
 
-        <div :class="{'h-0' : hidden, 'h-[calc(100vh-120px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}" class="absolute bg-black bg-opacity-80 z-10 transition-all duration-700 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-270px)] lg:opacity-100">
+        <div :class="{'h-0' : hidden, 'h-[calc(100vh-120px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}" class="absolute bg-black bg-opacity-90 z-10 transition-all duration-700 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-270px)] lg:opacity-100">
             <nav class="h-full">
                 <ul class="overflow-auto h-[calc(100vh-270px)]">
                     <!-- Rep Maxes -->
