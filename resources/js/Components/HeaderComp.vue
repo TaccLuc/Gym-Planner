@@ -1,5 +1,5 @@
 <script setup>
-import NavLi from '../NavLi.vue';
+import NavLi from './NavLi.vue';
 import {Link, usePage} from '@inertiajs/vue3';
 import { ref } from 'vue';
 

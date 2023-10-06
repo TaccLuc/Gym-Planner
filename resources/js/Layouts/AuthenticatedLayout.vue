@@ -1,5 +1,5 @@
 <script setup>
-import HeaderComp from '../Components/AuthComps/HeaderComp.vue';
+import HeaderComp from '../Components/HeaderComp.vue';
 
 </script>
 
@@ -13,7 +13,7 @@ import HeaderComp from '../Components/AuthComps/HeaderComp.vue';
         </div>
 
         <div class="h-[calc(100vh-120px)]  lg:h-screen lg:col-span-5 xl:col-span-10 p-2 lg:p-10 ">
-            <div class="w-full h-full bg-black bg-opacity-80 rounded text-white flex justify-center items-center">
+            <div class="w-full h-full bg-black bg-opacity-80 py-3 rounded text-white flex justify-center items-start lg:items-center overflow-auto">
                 <slot />
             </div>
         </div>
