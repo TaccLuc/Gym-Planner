@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('movements', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedTinyInteger('reps');
-            $table->unsignedTinyInteger('max_weight');
+            $table->string('name')->unique();
+            $table->unsignedTinyInteger('reps')->nullable();
+            $table->unsignedTinyInteger('max_weight')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                     ->references('id')

@@ -1,34 +1,98 @@
 <script setup>
+import FormInput from './FormInput.vue';
+import { ref } from 'vue';
+import { useForm } from '@inertiajs/vue3';
 
-defineProps({
-    movement: Object
+const data = defineProps({
+                movement: Object
+            })
+
+const edit = ref(false);
+const enableEdit = () => {
+    edit.value = true;
+}
+
+const form = useForm({
+    name: data.movement.name,
+    reps: data.movement.reps,
+    max_weight: data.movement.max_weight
 })
-
 </script>
 
 <template>
 
     <div class="flex justify-between text-xl rounded flex-wrap bg-white bg-opacity-40 p-1 mb-2">
-        <div class="capitalize w-full border-b">
-            {{ movement.name }}
-        </div>
-        <div v-if="movement.reps > 0">
-            {{ movement.reps }}
-            <span v-if="movement.reps == 1">
-                rep
-            </span>
-            <span v-else>
-                reps
-            </span>
-        </div>
-        <div>
-            {{ movement.max_weight }}kg
-        </div>
-        <div class="w-full border-t">
-            <button class="me-5">
+
+        <!-- Card -->
+        <template v-if="edit == false">
+            <div class="capitalize w-full border-b py-1">
+                {{ movement.name }}
+            </div>
+            <div v-if="movement.reps > 0" class=" py-1">
+                {{ movement.reps }}
+                <span v-if="movement.reps == 1">
+                    rep
+                </span>
+                <span v-else>
+                    reps
+                </span>
+            </div>
+            <div class=" py-1">
+                {{ movement.max_weight }}kg
+            </div>
+        </template>
+
+        <!-- Edit Form -->
+        <template v-else>
+            <div class="w-full border-b py-1">
+                <FormInput
+                    id="name"
+                    type="text"
+                    v-model="form.name"
+                    required
+                    :placeholder="movement.name" 
+                    class="border-b-0 capitalize mt-0 p-0 text-xl"
+                />
+            </div>
+            <div v-if="movement.reps > 0" class=" py-1 flex">
+                <FormInput
+                    id="reps"
+                    type="number"
+                    v-model="form.reps"
+                    :placeholder="movement.reps" 
+                    class="border-b-0 mt-0 p-0 text-xl"
+                />
+                <span v-if="movement.reps == 1">
+                    rep
+                </span>
+                <span v-else>
+                    reps
+                </span>
+                <FormInput 
+                    id="max_weight"
+                    type="number"
+                    v-model="form.max_weight"
+                    :placeholder="movement.max_weight"
+                    class="border-b-0 mt-0 p-0 text-xl text-right"
+                />
+                <span>
+                    kg
+                </span>
+            </div>
+            
+        </template>
+
+        <!-- Buttons -->
+        <div class="w-full border-t py-1">
+            
+            <button v-if="edit == false" @click="enableEdit" class="me-5 hover:underline">
                 Edit
             </button>
-            <button>
+            <button v-else class="me-5 hover:underline">
+                Save
+            </button>
+            
+            <button class="hover:underline">
                 Delete
             </button>
         </div>
