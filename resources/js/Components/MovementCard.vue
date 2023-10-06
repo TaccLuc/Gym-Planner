@@ -34,7 +34,9 @@ const submit = () => {
     });
 };
 
-
+const deleteMov = () => {
+    router.delete(`/movements/${data.movement.id}`);
+}
 
 </script>
 
@@ -117,7 +119,7 @@ const submit = () => {
                 Save
             </button>
             
-            <button class="hover:underline">
+            <button @click="deleteMov" class="hover:underline">
                 Delete
             </button>
         </div>

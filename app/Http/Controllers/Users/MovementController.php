@@ -73,6 +73,6 @@ class MovementController extends Controller
      */
     public function destroy(Movement $movement)
     {
-        //
+        $movement->delete();
     }
 }
