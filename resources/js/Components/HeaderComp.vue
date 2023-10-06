@@ -59,7 +59,7 @@ router.on('success', () => {
 </script>
 
 <template>
-    <header class="bg-black bg-opacity-90 text-white z-10 lg:h-screen lg:relative lg:border-e-2 lg:border-black lg:border-opacity-60">
+    <header class="bg-black  text-white z-10 lg:h-screen lg:relative lg:border-e-2 lg:border-black lg:border-opacity-60">
 
         <div class="flex justify-between items-center border-b-2 border-black border-opacity-60 px-4 py-3 h-[120px] lg:justify-center lg:py-5 lg:h-[200px]">
 
@@ -74,18 +74,18 @@ router.on('success', () => {
         </button>
         </div>
 
-        <div :class="{'h-0' : hidden, 'h-[calc(100vh-120px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}" class="absolute bg-black bg-opacity-90 z-10 transition-all duration-700 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-270px)] lg:opacity-100">
+        <div :class="{'h-0' : hidden, 'h-[calc(100vh-120px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}" class="absolute bg-black z-10 transition-all duration-700 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-270px)] lg:opacity-100">
             <nav class="h-full">
                 <ul class="overflow-auto lg:h-[calc(100vh-270px)] lg:opacity-100" :class="{'h-0' : hidden, 'h-[calc(100vh-270px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}">
                     <!-- Rep Maxes -->
-                    <NavLi :class="{'bg-white' : 'movements' == url, 'bg-opacity-20' : 'movements' == url}">
-                        <Link @click="menuToggle" :href="route('movements.index')">
+                    <NavLi :class="{'bg-red-700' : 'movements' == url, 'bg-opacity-40' : 'movements' == url}">
+                        <Link @click="menuToggle" :href="route('movements.index')" class="block">
                             Personal Records
                         </Link>
                     </NavLi>
 
                     <!-- Create Workout -->
-                    <NavLi @click="WOToggle" :class="{'bg-white' : addWO == true, 'bg-opacity-40' : addWO == true}">
+                    <NavLi @click="WOToggle" :class="{'bg-white' : addWO == true, 'bg-opacity-20' : addWO == true}">
                         + Add a workout
                     </NavLi>
 
@@ -106,7 +106,7 @@ router.on('success', () => {
                     </NavLi>
                     <!-- Workouts Toggle -->
                     <template v-if="workoutsList.length > 0">
-                        <NavLi @click="navToggle" :class="{'bg-white' : hiddenNav == false, 'bg-opacity-40' : hiddenNav == false}">
+                        <NavLi @click="navToggle" :class="{'bg-white' : hiddenNav == false, 'bg-opacity-20' : hiddenNav == false}">
                         
                         <div class="flex">
                             <span class="grow">
@@ -121,7 +121,7 @@ router.on('success', () => {
                     </template>
 
                     <!-- Workouts cycle -->
-                    <NavLi v-for="workout in workoutsList" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav, 'bg-white' : workout.slug == url, 'bg-opacity-20' : workout.slug == url}" class="overflow-hidden" >
+                    <NavLi v-for="workout in workoutsList" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav, 'bg-red-700' : workout.slug == url, 'bg-opacity-40' : workout.slug == url}" class="overflow-hidden" >
                         <Link @click="menuToggle" :href="route('workouts.show', workout.slug)">                            
                             <div class="flex">
                                 <span class="grow">

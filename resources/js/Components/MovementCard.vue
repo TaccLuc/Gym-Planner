@@ -74,7 +74,7 @@ const deleteMov = () => {
                     v-model="form.name"
                     required
                     :placeholder="movement.name" 
-                    class="border-b-0 capitalize mt-0 p-0 text-xl"
+                    class="border-b-0 capitalize p-0 text-xl"
                 />
             </div>
             
@@ -84,7 +84,7 @@ const deleteMov = () => {
                 type="number"
                 v-model="form.reps"
                 :placeholder="movement.reps" 
-                class="border-b-0 mt-0 p-0 text-xl w-2/4 inline-block"
+                class="border-b-0 p-0 text-xl inline-block w-3/5"
                 />
                 <span v-if="movement.reps == 1">
                     rep
@@ -95,13 +95,13 @@ const deleteMov = () => {
             </div>
             
             
-            <div v-if="movement.max_weight != null" class="py-1 flex w-2/4">
+            <div v-if="movement.max_weight != null" class="py-1 flex items-center w-2/4">
                 <FormInput 
                 id="max_weight"
                 type="number"
                 v-model="form.max_weight"
                 :placeholder="movement.max_weight"
-                class="border-b-0 mt-0 p-0 text-xl text-right"
+                class="border-b-0 p-0 text-xl text-right"
                 />
                 kg
             </div>
@@ -119,7 +119,7 @@ const deleteMov = () => {
                 Save
             </button>
             
-            <button @click="deleteMov" class="hover:underline">
+            <button @click="deleteMov" class="text-red-800 hover:underline">
                 Delete
             </button>
         </div>

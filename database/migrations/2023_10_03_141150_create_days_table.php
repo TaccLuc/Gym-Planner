@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->unsignedBigInteger('workout_id');
             $table->foreign('workout_id')
                     ->references('id')

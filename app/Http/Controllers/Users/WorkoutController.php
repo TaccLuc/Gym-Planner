@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Users\Day;
 
 class WorkoutController extends Controller
 {
@@ -52,8 +53,12 @@ class WorkoutController extends Controller
     public function show(String $slug)
     {
         $workout = Workout::where('slug', $slug)->firstOrFail();
-
-        return Inertia::render('Workouts/Show', compact('workout'));
+        $days = Day::where('workout_id', $workout->id)->get();
+        
+        return Inertia::render('Workouts/Show', [
+            'workout' => $workout,
+            'days' => $days
+        ]);
     }
 
     /**

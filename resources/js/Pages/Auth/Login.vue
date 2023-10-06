@@ -56,7 +56,9 @@ const submit = () => {
                 <label class="flex items-center">
                     <input type="checkbox" name="remember" class=" border-none focus:ring-0 text-red-700"
                     />
-                    <span class="ml-2 text-sm text-gray-300">Remember me</span>
+                    <span class="ml-2 text-sm text-gray-300">
+                        Remember me
+                    </span>
                 </label>
             </div>
 
