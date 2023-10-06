@@ -78,7 +78,7 @@ router.on('success', () => {
             <nav class="h-full">
                 <ul class="overflow-auto lg:h-[calc(100vh-270px)] lg:opacity-100" :class="{'h-0' : hidden, 'h-[calc(100vh-270px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}">
                     <!-- Rep Maxes -->
-                    <NavLi>
+                    <NavLi :class="{'bg-white' : 'movements' == url, 'bg-opacity-20' : 'movements' == url}">
                         <Link @click="menuToggle" :href="route('movements.index')">
                             Personal Records
                         </Link>
