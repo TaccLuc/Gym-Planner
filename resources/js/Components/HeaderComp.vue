@@ -1,5 +1,4 @@
 <script setup>
-import { InertiaProgress } from '@inertiajs/progress';
 import NavLi from './NavLi.vue';
 import {Link, usePage, useForm, router} from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
@@ -32,6 +31,8 @@ const form = useForm({
     user_id: user.value.id
 });
 
+let placeholderValue = 'Insert Name';
+
 const submit = () => {
     router.post('/workouts', form, {
         onFinish:() => {
@@ -40,6 +41,10 @@ const submit = () => {
         onSuccess:() => {
             addWO.value = false;
             hiddenNav.value = false;
+            menuToggle();
+        },
+        onError:() => {
+            placeholderValue = 'Need unique name'
         }
     });
 };
@@ -74,7 +79,7 @@ router.on('success', () => {
                 <ul class="overflow-auto lg:h-[calc(100vh-270px)] lg:opacity-100" :class="{'h-0' : hidden, 'h-[calc(100vh-270px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}">
                     <!-- Rep Maxes -->
                     <NavLi>
-                        <Link :href="route('movements.index')">
+                        <Link @click="menuToggle" :href="route('movements.index')">
                             Personal Records
                         </Link>
                     </NavLi>
@@ -87,11 +92,13 @@ router.on('success', () => {
                     <!-- Create Workout Form -->
                     <NavLi v-if="addWO">
                         <form @submit.prevent="submit" class="flex justify-between">
-                            <input type="text" placeholder="Insert name"
+                            <input type="text" 
+                            :placeholder="placeholderValue"
                             autofocus
                             required
                             v-model="form.name"
-                            class="border-0 bg-transparent focus:ring-transparent focus:border-white text-xl p-0 w-5/6 me-2">
+                            class="border-0 bg-transparent focus:ring-transparent focus:border-white text-xl p-0 w-5/6 me-2 placeholder:text-sm"
+                            >
                             <button type="submit" class="text-white cursor-pointer" :disabled="form.processing">
                                 <i class="fa-solid fa-check"></i>
                             </button>
@@ -115,7 +122,7 @@ router.on('success', () => {
 
                     <!-- Workouts cycle -->
                     <NavLi v-for="workout in workoutsList" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav, 'bg-white' : workout.slug == url, 'bg-opacity-20' : workout.slug == url}" class="overflow-hidden" >
-                        <Link :href="route('workouts.show', workout.slug)">                            
+                        <Link @click="menuToggle" :href="route('workouts.show', workout.slug)">                            
                             <div class="flex">
                                 <span class="grow">
                                     {{ workout.name }}
