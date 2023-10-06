@@ -9,6 +9,12 @@ class Workout extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'slug',
+        'user_id'
+    ];
+
     // Relationship
 
     public function days() {

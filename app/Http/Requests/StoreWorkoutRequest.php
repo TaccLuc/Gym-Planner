@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreWorkoutRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreWorkoutRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,15 @@ class StoreWorkoutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255|unique:workouts,name',
+            'user_id' => 'required|exists:users,id'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.unique' => 'Workout name must be unique'
         ];
     }
 }

@@ -7,6 +7,8 @@ use App\Http\Requests\StoreWorkoutRequest;
 use App\Http\Requests\UpdateWorkoutRequest;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class WorkoutController extends Controller
 {
@@ -31,7 +33,17 @@ class WorkoutController extends Controller
      */
     public function store(StoreWorkoutRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $slug = Str::slug($data['name']);
+
+        Workout::create([
+            'name' => $data['name'],
+            'slug' => $slug,
+            'user_id' => $data['user_id']
+        ]);
+        
+        return redirect()->route('workouts.show', ['workout' => $slug]);
     }
 
     /**

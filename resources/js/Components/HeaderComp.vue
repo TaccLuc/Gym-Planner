@@ -1,12 +1,14 @@
 <script setup>
 import NavLi from './NavLi.vue';
-import {Link, usePage} from '@inertiajs/vue3';
-import { ref } from 'vue';
+import {Link, usePage, useForm, router} from '@inertiajs/vue3';
+import { ref, computed } from 'vue';
 
+// SHARED DATA
 const page = usePage();
-const workoutsList = ref(page.props.workoutsList);
+const workoutsList = computed(() => page.props.workoutsList);
 const user = ref(page.props.auth.user);
 
+// TOGGLE
 const hiddenNav = ref(true);
 const navToggle = () => {
     hiddenNav.value = !hiddenNav.value;
@@ -15,6 +17,29 @@ const navToggle = () => {
 const hidden = ref(true);
 const menuToggle = () => {
     hidden.value = !hidden.value;
+};
+
+const addWO = ref (false);
+const WOToggle = () => {
+    addWO.value = !addWO.value;
+};
+
+// FORM DATA + LOGIC
+
+const form = useForm({
+    name: '',
+    user_id: user.value.id
+});
+
+const submit = () => {
+    router.post('/workouts', form, {
+        onFinish:() => {
+            form.name = '';
+        },
+        onSuccess:() => {
+            addWO.value = false;
+        }
+    });
 };
 
 </script>
@@ -46,13 +71,26 @@ const menuToggle = () => {
                     </NavLi>
 
                     <!-- Create Workout -->
-                    <NavLi>
+                    <NavLi @click="WOToggle" :class="{'bg-white' : addWO == true, 'bg-opacity-40' : addWO == true}">
                         + Add a workout
                     </NavLi>
 
+                    <!-- Create Workout Form -->
+                    <NavLi v-if="addWO">
+                        <form @submit.prevent="submit" class="flex justify-between">
+                            <input type="text" placeholder="Insert name"
+                            autofocus
+                            required
+                            v-model="form.name"
+                            class="border-0 bg-transparent focus:ring-transparent focus:border-white text-xl p-0 w-5/6 me-2">
+                            <button type="submit" class="text-white cursor-pointer" :disabled="form.processing">
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                        </form>
+                    </NavLi>
                     <!-- Workouts Toggle -->
                     <template v-if="workoutsList.length > 0">
-                        <NavLi @click="navToggle">
+                        <NavLi @click="navToggle" :class="{'bg-white' : hiddenNav == false, 'bg-opacity-40' : hiddenNav == false}">
                         
                         <div class="flex">
                             <span class="grow">
