@@ -36,7 +36,10 @@ class MovementController extends Controller
      */
     public function store(StoreMovementRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        Movement::create($data);
+
     }
 
     /**

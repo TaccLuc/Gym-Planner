@@ -41,7 +41,7 @@ class WorkoutController extends Controller
     {
         $workout = Workout::where('slug', $slug)->firstOrFail();
 
-        return Inertia::render('Workouts/Show', compact('workouts'));
+        return Inertia::render('Workouts/Show', compact('workout'));
     }
 
     /**

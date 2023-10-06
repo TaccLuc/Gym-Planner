@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->unsignedTinyInteger('reps')->nullable();
-            $table->unsignedTinyInteger('max_weight')->nullable();
+            $table->unsignedSmallInteger('max_weight')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                     ->references('id')
