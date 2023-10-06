@@ -37,7 +37,7 @@ const menuToggle = () => {
 
         <div :class="{'h-0' : hidden, 'h-[calc(100vh-120px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}" class="absolute bg-black bg-opacity-90 z-10 transition-all duration-700 ease-in-out lg:bg-transparent lg:static lg:h-[calc(100vh-270px)] lg:opacity-100">
             <nav class="h-full">
-                <ul class="overflow-auto" :class="{'h-0' : hidden, 'h-[calc(100vh-270px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}">
+                <ul class="overflow-auto lg:h-[calc(100vh-270px)] lg:opacity-100" :class="{'h-0' : hidden, 'h-[calc(100vh-270px)]' : !hidden, 'opacity-0' : hidden, 'opacity-100' : !hidden}">
                     <!-- Rep Maxes -->
                     <NavLi>
                         <Link :href="route('movements.index')">

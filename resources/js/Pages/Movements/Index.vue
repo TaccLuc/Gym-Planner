@@ -15,7 +15,7 @@ defineProps({
 <template>
     <Head title="Personal Records" />
 
-        <div class="border p-2 w-11/12">
+        <div class="border p-2 w-11/12 lg:w-2/4">
             <button class="block w-full mb-4 text-3xl text-center border border-white py-1 rounded bg-white bg-opacity-10 hover:bg-white hover:bg-opacity-50 hover:text-black">
                 Add a PR
             </button>
@@ -25,7 +25,7 @@ defineProps({
                 <MovementCard :movement="movement" />
 
             </template>
-
+            
         </div>
 
 </template>

@@ -28,7 +28,7 @@ const form = useForm({
             <div class="capitalize w-full border-b py-1">
                 {{ movement.name }}
             </div>
-            <div v-if="movement.reps > 0" class=" py-1">
+            <div v-if="movement.reps != null" class=" py-1">
                 {{ movement.reps }}
                 <span v-if="movement.reps == 1">
                     rep
@@ -37,8 +37,10 @@ const form = useForm({
                     reps
                 </span>
             </div>
-            <div class=" py-1">
+            <div v-if="movement.max_weight != null">
+                
                 {{ movement.max_weight }}kg
+                
             </div>
         </template>
 
@@ -54,13 +56,14 @@ const form = useForm({
                     class="border-b-0 capitalize mt-0 p-0 text-xl"
                 />
             </div>
-            <div v-if="movement.reps > 0" class=" py-1 flex">
+            
+            <div  v-if="movement.reps !=null" class="py-1 w-2/4">
                 <FormInput
-                    id="reps"
-                    type="number"
-                    v-model="form.reps"
-                    :placeholder="movement.reps" 
-                    class="border-b-0 mt-0 p-0 text-xl"
+                id="reps"
+                type="number"
+                v-model="form.reps"
+                :placeholder="movement.reps" 
+                class="border-b-0 mt-0 p-0 text-xl w-2/4 inline-block"
                 />
                 <span v-if="movement.reps == 1">
                     rep
@@ -68,17 +71,20 @@ const form = useForm({
                 <span v-else>
                     reps
                 </span>
-                <FormInput 
-                    id="max_weight"
-                    type="number"
-                    v-model="form.max_weight"
-                    :placeholder="movement.max_weight"
-                    class="border-b-0 mt-0 p-0 text-xl text-right"
-                />
-                <span>
-                    kg
-                </span>
             </div>
+            
+            
+            <div v-if="movement.max_weight != null" class="py-1 flex w-2/4">
+                <FormInput 
+                id="max_weight"
+                type="number"
+                v-model="form.max_weight"
+                :placeholder="movement.max_weight"
+                class="border-b-0 mt-0 p-0 text-xl text-right"
+                />
+                kg
+            </div>
+            
             
         </template>
 
