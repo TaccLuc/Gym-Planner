@@ -63,7 +63,9 @@ class MovementController extends Controller
      */
     public function update(UpdateMovementRequest $request, Movement $movement)
     {
-        //
+        $data = $request->validated();
+        
+        $movement->update($data);
     }
 
     /**

@@ -1,22 +1,41 @@
 <script setup>
 import FormInput from './FormInput.vue';
 import { ref } from 'vue';
-import { useForm } from '@inertiajs/vue3';
+import { useForm, router, usePage } from '@inertiajs/vue3';
 
+// PROPS
 const data = defineProps({
                 movement: Object
             })
 
+// SHARED DATA
+const page = usePage();
+const user = ref(page.props.auth.user);
+
+// TOGGLE MENU
 const edit = ref(false);
 const enableEdit = () => {
     edit.value = true;
 }
 
+// FORM DATA + LOGIC
 const form = useForm({
     name: data.movement.name,
     reps: data.movement.reps,
-    max_weight: data.movement.max_weight
+    max_weight: data.movement.max_weight,
+    user_id: user.value.id
 })
+
+const submit = () => {
+    router.put(`/movements/${data.movement.id}`, form, {
+        onSuccess:() => {
+            edit.value = false;
+        }
+    });
+};
+
+
+
 </script>
 
 <template>
@@ -94,7 +113,7 @@ const form = useForm({
             <button v-if="edit == false" @click="enableEdit" class="me-5 hover:underline">
                 Edit
             </button>
-            <button v-else class="me-5 hover:underline">
+            <button v-else @click="submit" class="me-5 hover:underline">
                 Save
             </button>
             
