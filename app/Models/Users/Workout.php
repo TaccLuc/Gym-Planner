@@ -17,8 +17,8 @@ class Workout extends Model
 
     // Relationship
 
-    public function days() {
-        return $this->hasMany(Day::class);
+    public function weeks() {
+        return $this->hasMany(Week::class);
     }
 
     public function user() {

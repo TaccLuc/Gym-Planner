@@ -13,6 +13,7 @@ use App\Http\Controllers\Users\PlannerController;
 use App\Http\Controllers\Users\MovementController;
 use App\Http\Controllers\Users\ExerciseController;
 use App\Http\Controllers\Users\DayController;
+use App\Http\Controllers\Users\WeekController;
 use App\Http\Controllers\Users\WorkoutController;
 
 /*
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('movements', MovementController::class);
     Route::resource('exercises', ExerciseController::class);
     Route::resource('days', DayController::class);
+    Route::resource('weeks', WeekController::class);
     Route::resource('workouts', WorkoutController::class)->parameters(['slug' => 'slug']);
 
 });

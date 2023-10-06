@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('days', function (Blueprint $table) {
+        Schema::create('weeks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('week_id');
-            $table->foreign('week_id')
+            $table->unsignedBigInteger('workout_id');
+            $table->foreign('workout_id')
                     ->references('id')
-                    ->on('weeks')
+                    ->on('workouts')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->timestamps();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('days');
+        Schema::dropIfExists('weeks');
     }
 };

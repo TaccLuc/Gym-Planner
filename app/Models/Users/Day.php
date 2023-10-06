@@ -10,13 +10,13 @@ class Day extends Model
     use HasFactory;
 
     protected $fillable = [
-        'workout_id'
+        'week_id'
     ];
     
     // Relationships
 
-    public function workout() {
-        return $this->belongsTo(Workout::class);
+    public function week() {
+        return $this->belongsTo(Week::class);
     }
 
     public function exercises() {

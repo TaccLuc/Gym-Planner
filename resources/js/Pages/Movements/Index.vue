@@ -109,7 +109,7 @@ const submit = () => {
             
             
                 <!-- Movement List -->
-                <template v-for="movement in movements">
+                <template v-for="movement in movements" :key="movement.id">
                     
                     <MovementCard :movement="movement" />
 

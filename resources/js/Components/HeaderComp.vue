@@ -121,7 +121,7 @@ router.on('success', () => {
                     </template>
 
                     <!-- Workouts cycle -->
-                    <NavLi v-for="workout in workoutsList" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav, 'bg-red-700' : workout.slug == url, 'bg-opacity-40' : workout.slug == url}" class="overflow-hidden" >
+                    <NavLi v-for="workout in workoutsList" :key="workout.id" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav, 'bg-red-700' : workout.slug == url, 'bg-opacity-40' : workout.slug == url}" class="overflow-hidden" >
                         <Link @click="menuToggle" :href="route('workouts.show', workout.slug)">                            
                             <div class="flex">
                                 <span class="grow">
