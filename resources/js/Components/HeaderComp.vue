@@ -1,4 +1,5 @@
 <script setup>
+import { InertiaProgress } from '@inertiajs/progress';
 import NavLi from './NavLi.vue';
 import {Link, usePage, useForm, router} from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
@@ -38,9 +39,17 @@ const submit = () => {
         },
         onSuccess:() => {
             addWO.value = false;
+            hiddenNav.value = false;
         }
     });
 };
+
+// GET URL
+const url = ref(window.location.href.split('/').pop());
+
+router.on('success', () => {
+    url.value = window.location.href.split('/').pop();
+})
 
 </script>
 
@@ -105,9 +114,8 @@ const submit = () => {
                     </template>
 
                     <!-- Workouts cycle -->
-                    <NavLi v-for="workout in workoutsList" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav}" class="overflow-hidden">
-                        <Link :href="route('workouts.show', workout.slug)">
-                            
+                    <NavLi v-for="workout in workoutsList" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav, 'bg-white' : workout.slug == url, 'bg-opacity-20' : workout.slug == url}" class="overflow-hidden" >
+                        <Link :href="route('workouts.show', workout.slug)">                            
                             <div class="flex">
                                 <span class="grow">
                                     {{ workout.name }}
@@ -116,7 +124,6 @@ const submit = () => {
                                     <i class="fa-solid fa-chevron-right"></i>
                                 </span>
                             </div>
-                            
                         </Link>
                     </NavLi>
                     
