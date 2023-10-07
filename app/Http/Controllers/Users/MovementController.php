@@ -8,7 +8,11 @@ use App\Http\Requests\UpdateMovementRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
-
+use App\Models\User;
+use App\Models\Users\Workout;
+use App\Models\Users\Week;
+use App\Models\Users\Day;
+use App\Models\Users\Exercise;
 
 class MovementController extends Controller
 {
@@ -69,8 +73,19 @@ class MovementController extends Controller
     public function update(UpdateMovementRequest $request, Movement $movement)
     {
         $data = $request->validated();
-        
         $movement->update($data);
+
+        $user = User::where('id', Auth::id())->with('workouts.weeks.days.exercises')->firstOrFail();
+        $exercises = $user->workouts->flatMap->weeks->flatMap->days->flatMap->exercises;
+
+        foreach ($exercises as $exercise) {
+            if ($exercise['name'] == $movement['name']) {
+                $exercise['weight'] = $movement['max_weight'];
+                $exercise->save();
+            }
+        }
+
+
     }
 
     /**

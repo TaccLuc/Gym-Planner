@@ -13,6 +13,8 @@ class Week extends Model
         'workout_id'
     ];
 
+    // RELATIONSHIPS
+
     public function workout() {
         return $this->belongsTo(Workout::class);
     }

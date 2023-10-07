@@ -40,7 +40,7 @@ const deleteWeek = () => {
         <div class="flex justify-between flex-wrap lg:justify-start mb-4">
             <div class="lg:w-full">
                 <span class="lg:text-3xl">
-                Week {{ data.index + 1 }}
+                    Week {{ data.index + 1 }}
                     <button @click="deleteWeek" class="ms-1">
                         <i class="fa-solid fa-xmark text-red-700"></i>
                     </button>
