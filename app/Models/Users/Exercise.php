@@ -23,4 +23,6 @@ class Exercise extends Model
     public function day() {
         return $this->belongsTo(Day::class);
     }
+
+    
 }

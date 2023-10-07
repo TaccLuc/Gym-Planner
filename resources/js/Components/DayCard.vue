@@ -1,18 +1,20 @@
 <script setup>
 import FormInput from '../Components/FormInput.vue';
 import { useForm, router } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
 // PROPS
 const data = defineProps({
     day: Object,
-    index: Number
+    index: Number,
+    exercises: Array
 })
 
 // TOGGLE
 const hidden = ref(true);
 const menuToggle = () => {
     hidden.value = !hidden.value;
+    console.log(data.exercises);
 };
 
 // DELETE DAY
@@ -31,8 +33,19 @@ const exerciseForm = useForm({
 });
 
 const addExercise = () => {
-    router.post('/exercises', exerciseForm);
+    router.post('/exercises', exerciseForm, {
+        onSuccess: () => {
+            exerciseForm.reset();
+            hidden.value = true;
+        }
+    });
+    
 };
+
+// FILTERED EXERCISES
+const filteredExercises = computed(() => 
+    data.exercises[data.index].filter((exercise) => exercise.day_id == data.day.id
+));
 
 </script>
 
@@ -102,8 +115,11 @@ const addExercise = () => {
 
                     
 
-                    <button type="submit">
+                    <button type="submit" class="hover:underline me-8">
                         Add
+                    </button>
+                    <button @click="menuToggle" class="hover:underline">
+                        Cancel
                     </button>
                 </form>
            </template>
@@ -117,6 +133,13 @@ const addExercise = () => {
                     Add exercise
                 </button>
            </template>
+
+           <!-- Exercises Cycle -->
+           <div v-for="exercise in filteredExercises">
+
+            {{ exercise.name }}
+
+           </div>
 
         </div>
 

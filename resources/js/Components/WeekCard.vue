@@ -7,7 +7,8 @@ import { computed } from 'vue';
 const data = defineProps({
                 week: Object,
                 index: Number,
-                days: Array
+                days: Array,
+                exercises: Array
             })
 
 // FORM DATA + LOGIC
@@ -55,7 +56,7 @@ const deleteWeek = () => {
             <div class="lg:flex lg:flex-wrap ">
                 <div v-for="(day, index) in filteredDays" :key="days.id" class="w-full px-2 xl:w-2/4">
 
-                    <DayCard :day="day" :index="index" />
+                    <DayCard :day="day" :index="index" :exercises="data.exercises" />
 
                 </div>
             </div>

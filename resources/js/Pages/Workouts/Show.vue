@@ -12,7 +12,8 @@ defineOptions({
 const data = defineProps({
                 workout: Object,
                 weeks: Array,
-                days: Array
+                days: Array,
+                exercises: Array
             });
 
 // FORM DATA + LOGIC
@@ -53,7 +54,7 @@ const addWeek = () => {
                 <template v-if="weeks">
                     <div v-for="(week, index) in weeks" :key="week.id" class="w-full px-2">
 
-                        <WeekCard :week="week" :index="index" :days="data.days" />
+                        <WeekCard :week="week" :index="index" :days="data.days" :exercises="data.exercises" />
 
                     </div>
                 </template>

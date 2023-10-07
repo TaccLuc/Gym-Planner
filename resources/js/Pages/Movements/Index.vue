@@ -36,13 +36,9 @@ const form = useForm({
 
 const submit = () => {
     router.post('/movements', form, {
-        onFinish:() => {
-            form.name = '';
-            form.reps = '';
-            form.max_weight = '';
-        },
         onSuccess:() => {
             add.value = false;
+            form.reset();
         }
     });
 };
@@ -87,7 +83,7 @@ const submit = () => {
                                 v-model="form.name"
                                 required
                                 placeholder="Name" 
-                                class="border-b-0 capitalize mt-0 p-0 text-xl"
+                                class="border-b-0 capitalize mt-0 p-0 w-full text-xl"
                             />
                         </div>
                     

@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Users\Week;
 use App\Models\Users\Day;
+use App\Models\Users\Exercise;
 
 class WorkoutController extends Controller
 {
@@ -56,15 +57,23 @@ class WorkoutController extends Controller
         $workout = Workout::where('slug', $slug)->firstOrFail();
         $weeks = Week::where('workout_id', $workout->id)->get();
         $days = [];
+        $exercises = [];
 
         foreach ($weeks as $week) {
             $days[] = Day::where('week_id', $week->id)->get();
         };
 
+        foreach ($days as $outerArray) {
+            foreach ($outerArray as $day) {
+                $exercises[] = Exercise::where('day_id', $day->id)->get();
+            }
+        }
+
         return Inertia::render('Workouts/Show', [
             'workout' => $workout,
             'weeks' => $weeks,
-            'days' => $days
+            'days' => $days,
+            'exercises' => $exercises
         ]);
     }
 
