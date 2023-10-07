@@ -110,6 +110,7 @@ const filteredExercises = computed(() =>
                             id="weight"
                             type="number"
                             v-model="exerciseForm.weight"
+                            min="0" max="100" step="0.1"
                             placeholder="kg" 
                             class="border-b-0 capitalize mt-0 p-0 w-full placeholder:text-gray-400 text-lg py-2"
                         />

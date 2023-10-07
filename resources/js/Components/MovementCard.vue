@@ -103,6 +103,7 @@ const deleteMov = () => {
                     id="max_weight"
                     type="number"
                     v-model="form.max_weight"
+                    min="0" max="100" step="0.1"
                     :placeholder="movement.max_weight"
                     class="border-b-0 p-0 text-xl text-right w-full"
                     />

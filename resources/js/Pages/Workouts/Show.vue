@@ -48,7 +48,7 @@ const exportAsPDF = async () => {
         filename: `${data.workout.slug}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 1 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape', zoom: 0.5 },
     };
 
     const excludedElements = document.querySelectorAll('.ignorePDF');
@@ -56,7 +56,7 @@ const exportAsPDF = async () => {
         element.classList.add('hidden');
       });
     
-    await html2pdf().from(content).set(options).save();
+    html2pdf().from(content).set(options).save();
 
     setTimeout(() => {
         excludedElements.forEach((element) => {
