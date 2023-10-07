@@ -100,6 +100,7 @@ const filteredExercises = computed(() =>
                             id="percentage"
                             type="number"
                             v-model="exerciseForm.percentage"
+                            min="0" max="100" step="0.1"
                             placeholder="%" 
                             class="border-b-0 capitalize mt-0 p-0 w-full placeholder:text-gray-400 text-lg py-2"
                         />
@@ -116,7 +117,7 @@ const filteredExercises = computed(() =>
 
                     
 
-                    <button type="submit" class="hover:underline me-8 text-red-700">
+                    <button type="submit" class="hover:underline me-8 text-red-700 font-bold">
                         Add
                     </button>
                     <button @click="menuToggle" type="reset" class="hover:underline">

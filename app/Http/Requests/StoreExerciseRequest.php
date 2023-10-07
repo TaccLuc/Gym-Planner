@@ -26,7 +26,7 @@ class StoreExerciseRequest extends FormRequest
             'name' => 'required|max:255',
             'sets' => 'nullable|max:255',
             'reps' => 'nullable|max:255',
-            'percentage' => 'nullable|numeric',
+            'percentage' => 'nullable|numeric|max:100',
             'weight' => 'nullable|numeric',
             'day_id' => 'required'
         ];

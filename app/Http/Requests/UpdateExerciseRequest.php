@@ -27,7 +27,7 @@ class UpdateExerciseRequest extends FormRequest
             'sets' => 'nullable|max:255',
             'reps' => 'nullable|max:255',
             'percentage' => 'nullable|numeric',
-            'weight' => 'nullable|numeric',
+            'percentage' => 'nullable|numeric|max:100',
             'day_id' => 'required'    
         ];
     }

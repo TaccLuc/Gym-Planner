@@ -64,13 +64,19 @@ const deleteExercise = () => {
 
             <div class="w-1/4 md:text-center">
                 <span v-if="exercise.percentage">
-                    {{ exercise.percentage }}%
+                    {{ Math.ceil(exercise.percentage) }}%
                 </span>
             </div>
 
             <div class="w-1/4 md:text-right">
                 <span v-if="exercise.weight">
-                    {{ exercise.weight }}kg
+                    <span v-if="exercise.percentage">
+                        {{ Math.ceil(exercise.weight * (exercise.percentage / 100)) }}
+                    </span>
+                    <span v-else>
+                        {{ exercise.weight }}
+                    </span>
+                    kg
                 </span>
             </div>
         </template>
@@ -111,6 +117,7 @@ const deleteExercise = () => {
                         id="percentage"
                         type="number"
                         v-model="exerciseForm.percentage"
+                        min="0" max="100" step="0.1"
                         placeholder="%" 
                         class="border-b-0 capitalize mt-0 p-0  text-center w-full placeholder:text-gray-400 text-xs py-2 lg:text-xl"
                     />

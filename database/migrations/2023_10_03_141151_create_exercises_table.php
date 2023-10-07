@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('sets')->nullable();
             $table->string('reps')->nullable();
-            $table->unsignedTinyInteger('percentage')->nullable();
+            $table->decimal('percentage', 4, 1)->nullable();
             $table->unsignedSmallInteger('weight')->nullable();
             $table->unsignedBigInteger('day_id');
             $table->foreign('day_id')
