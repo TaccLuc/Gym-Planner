@@ -47,21 +47,25 @@ const exportAsPDF = async () => {
         margin: 0,
         filename: `${data.workout.slug}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 1 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape', zoom: 0.5 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape'},
     };
 
     const excludedElements = document.querySelectorAll('.ignorePDF');
       excludedElements.forEach((element) => {
         element.classList.add('hidden');
       });
-    
+    content.classList.add('scale-75');
+    content.classList.add('-mt-24');
+
     html2pdf().from(content).set(options).save();
 
     setTimeout(() => {
         excludedElements.forEach((element) => {
             element.classList.remove('hidden');
         });
+        content.classList.remove('scale-75');
+        content.classList.remove('-mt-24');
     }, 0);
 }
 </script>
