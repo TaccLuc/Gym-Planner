@@ -1,5 +1,6 @@
 <script setup>
-import { router } from '@inertiajs/vue3';
+import { useForm, router } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 // PROPS
 const data = defineProps({
@@ -7,10 +8,31 @@ const data = defineProps({
     index: Number
 })
 
+// TOGGLE
+const hidden = ref(true);
+const menuToggle = () => {
+    hidden.value = !hidden.value;
+};
+
 // DELETE DAY
 const deleteDay = () => {
     router.delete(`/days/${data.day.id}`);
 }
+
+// FORM DATA + LOGIC
+const exerciseForm = useForm({
+    name: '',
+    sets: '',
+    reps: '',
+    percentage: '',
+    weight: '',
+    day_id: data.day.id
+});
+
+const addExercise = () => {
+    router.post('/exercises', exerciseForm);
+};
+
 </script>
 
 <template>
@@ -26,7 +48,21 @@ const deleteDay = () => {
         </div>
 
         <div>
-            Ciao
+           <template v-if="!hidden">
+                <form @submit.prevent="addExercise">
+
+                    <button type="submit">
+                        Add
+                    </button>
+                </form>
+           </template>
+
+           <template v-else>
+                <button @click="menuToggle">
+                    Add exercise
+                </button>
+           </template>
+
         </div>
 
     </div>

@@ -9,11 +9,16 @@ class Exercise extends Model
 {
     use HasFactory;
 
-    // Relationships
+    protected $fillable = [
+        'name',
+        'sets',
+        'reps',
+        'percentage',
+        'weight',
+        'day_id'
+    ];
 
-    public function movement() {
-        return $this->belongsTo(Movement::class);
-    }
+    // Relationships
 
     public function day() {
         return $this->belongsTo(Day::class);

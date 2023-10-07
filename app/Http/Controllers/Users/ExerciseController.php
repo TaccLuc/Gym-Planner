@@ -7,6 +7,8 @@ use App\Http\Requests\StoreExerciseRequest;
 use App\Http\Requests\UpdateExerciseRequest;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
+use App\Models\Users\Movement;
+use Illuminate\Support\Facades\Auth;
 
 class ExerciseController extends Controller
 {
@@ -31,7 +33,25 @@ class ExerciseController extends Controller
      */
     public function store(StoreExerciseRequest $request)
     {
-        //
+        $data = $request->validated();
+        $weight = null;
+
+        if (isset($data->percentage)) {
+            $movements = Movement::where('user_id', Auth::id())->get();
+            $weight = array_search($data->name, $movements);
+        }
+        else {
+            $weight = $data->weight;
+        }
+
+        Exercise::create([
+            'name' => $data->name,
+            'sets' => $data->sets,
+            'reps' => $data->reps,
+            'percentage' => $data->percentage,
+            'weight' => $weight,
+            'day_id' => $data->day_id
+        ]);
     }
 
     /**
