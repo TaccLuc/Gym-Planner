@@ -54,11 +54,16 @@ const submit = () => {
 
         <div class="w-full h-full flex justify-center overflow-auto">
             <div class="p-2 w-11/12 lg:w-2/4 ">
+                
+                <!-- ADD BUTTON -->
                 <button v-if="add == false" @click="enableAdd" class="block w-full mb-4 text-3xl text-center border border-white py-1 rounded bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-60 hover:text-black">
                     Add a PR
                 </button>
+
+                <!-- ADD PR FORM -->
                 <form v-else @submit.prevent="submit">
-                                
+                    
+                    <!-- SAVE BUTTON -->
                     <button  type="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                     class="block w-full mb-4 text-3xl text-center border border-white py-1 rounded bg-white bg-opacity-10 hover:bg-white hover:bg-opacity-50 hover:text-black">
                         Save
@@ -73,6 +78,8 @@ const submit = () => {
                                 {{ errors.name }}
                             </span>
                         </div>
+
+                        <!-- FORM -->
                         <div class="w-full border-b py-1">
                             <FormInput
                                 id="name"

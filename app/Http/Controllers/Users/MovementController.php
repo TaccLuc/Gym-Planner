@@ -38,7 +38,12 @@ class MovementController extends Controller
     {
         $data = $request->validated();
 
-        Movement::create($data);
+        Movement::create([
+            'name' => strtolower($data['name']),
+            'reps' => $data['reps'],
+            'max_weight' => $data['max_weight'],
+            'user_id' => $data['user_id']
+        ]);
 
     }
 

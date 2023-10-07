@@ -78,34 +78,40 @@ const deleteMov = () => {
                 />
             </div>
             
-            <div  v-if="movement.reps !=null" class="py-1 w-2/4">
-                <FormInput
-                id="reps"
-                type="number"
-                v-model="form.reps"
-                :placeholder="movement.reps" 
-                class="border-b-0 p-0 text-xl inline-block w-3/5"
-                />
-                <span v-if="movement.reps == 1">
-                    rep
-                </span>
-                <span v-else>
-                    reps
-                </span>
+            <div class="w-full flex">
+
+                <div  v-if="movement.reps !=null" class="py-1 w-2/4">
+                    <FormInput
+                    id="reps"
+                    type="number"
+                    v-model="form.reps"
+                    :placeholder="movement.reps" 
+                    class="border-b-0 p-0 text-xl inline-block w-1/4"
+                    />
+
+                    <span v-if="movement.reps == 1">
+                        rep
+                    </span>
+                    <span v-else>
+                        reps
+                    </span>
+                </div>
+                
+                
+                <div v-if="movement.max_weight != null" class="py-1 flex items-center w-2/4">
+                    <FormInput 
+                    id="max_weight"
+                    type="number"
+                    v-model="form.max_weight"
+                    :placeholder="movement.max_weight"
+                    class="border-b-0 p-0 text-xl text-right w-full"
+                    />
+
+                    kg
+                </div>
+
             </div>
-            
-            
-            <div v-if="movement.max_weight != null" class="py-1 flex items-center w-2/4">
-                <FormInput 
-                id="max_weight"
-                type="number"
-                v-model="form.max_weight"
-                :placeholder="movement.max_weight"
-                class="border-b-0 p-0 text-xl text-right"
-                />
-                kg
-            </div>
-            
+
             
         </template>
 

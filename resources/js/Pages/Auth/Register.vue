@@ -32,12 +32,13 @@ const submit = () => {
                 <FormInput
                     id="name"
                     type="text"
-                    class="h-[35px]"
+                    class="h-[35px] w-full"
                     v-model="form.name"
                     required
                     autofocus
                     autocomplete="name"
                     placeholder="Name"
+                    
                 />
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
@@ -47,7 +48,7 @@ const submit = () => {
                 <FormInput
                     id="email"
                     type="email"
-                    class="h-[35px]"
+                    class="h-[35px] w-full"
                     v-model="form.email"
                     required
                     autocomplete="username"
@@ -61,7 +62,7 @@ const submit = () => {
                 <FormInput
                     id="password"
                     type="password"
-                    class="h-[35px]"
+                    class="h-[35px] w-full"
                     v-model="form.password"
                     required
                     autocomplete="new-password"
@@ -75,7 +76,7 @@ const submit = () => {
                 <FormInput
                     id="password_confirmation"
                     type="password"
-                    class="h-[35px]"
+                    class="h-[35px] w-full"
                     v-model="form.password_confirmation"
                     required
                     autocomplete="new-password"

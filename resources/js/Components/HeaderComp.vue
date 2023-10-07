@@ -18,9 +18,6 @@ const hidden = ref(true);
 const menuToggle = () => {
     hidden.value = !hidden.value;
 };
-const menuShow = () => {
-    hidden.value = false;
-}
 
 const addWO = ref (false);
 const WOToggle = () => {
@@ -107,6 +104,7 @@ router.on('success', () => {
                             </button>
                         </form>
                     </NavLi>
+
                     <!-- Workouts Toggle -->
                     <template v-if="workoutsList.length > 0">
                         <NavLi @click="navToggle" :class="{'bg-white' : hiddenNav == false, 'bg-opacity-20' : hiddenNav == false}">
@@ -125,7 +123,7 @@ router.on('success', () => {
 
                     <!-- Workouts cycle -->
                     <NavLi v-for="workout in workoutsList" :key="workout.id" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav, 'bg-red-700' : workout.slug == url, 'bg-opacity-40' : workout.slug == url}" class="overflow-hidden" >
-                        <Link @click="menuShow" :href="route('workouts.show', workout.slug)">                            
+                        <Link @click="menuToggle" :href="route('workouts.show', workout.slug)">                            
                             <div class="flex">
                                 <span class="grow">
                                     {{ workout.name }}

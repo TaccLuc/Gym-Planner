@@ -36,21 +36,26 @@ class ExerciseController extends Controller
         $data = $request->validated();
         $weight = null;
 
-        if (isset($data->percentage)) {
+        if (isset($data['percentage'])) {
             $movements = Movement::where('user_id', Auth::id())->get();
-            $weight = array_search($data->name, $movements);
+            foreach ($movements as $movement) {
+                if ($movement['name'] === strtolower($data['name'])) {
+                    $weight = $movement['max_weight'];
+                    break;
+                }
+            }
         }
-        else {
-            $weight = $data->weight;
+        else if (isset($data['weight'])) {
+            $weight = $data['weight'];
         }
 
         Exercise::create([
-            'name' => $data->name,
-            'sets' => $data->sets,
-            'reps' => $data->reps,
-            'percentage' => $data->percentage,
+            'name' => strtolower($data['name']),
+            'sets' => $data['sets'],
+            'reps' => $data['reps'],
+            'percentage' => $data['percentage'],
             'weight' => $weight,
-            'day_id' => $data->day_id
+            'day_id' => $data['day_id']
         ]);
     }
 

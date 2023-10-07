@@ -35,6 +35,7 @@ const submit = () => {
                     autofocus
                     autocomplete="username"
                     placeholder="Email"
+                    class="w-full"
                 />
             </div>
 
@@ -47,6 +48,7 @@ const submit = () => {
                     required
                     autocomplete="current-password"
                     placeholder="Password"
+                    class="w-full"
                 />
                 
                 <InputError class="mt-2" :message="form.errors.email" />
