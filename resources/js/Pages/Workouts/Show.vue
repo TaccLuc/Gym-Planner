@@ -16,6 +16,7 @@ const weekForm = ({
 });
 
 const addWeek = () => {
+    weekForm.workout_id = props.workout.id;
     router.post('/weeks', weekForm);
 };
 
