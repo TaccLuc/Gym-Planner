@@ -64,7 +64,7 @@ const deleteExercise = () => {
 
             <div class="w-1/4 md:text-center">
                 <span v-if="exercise.percentage">
-                    {{ Math.ceil(exercise.percentage) }}%
+                    {{ exercise.percentage }}%
                 </span>
             </div>
 
