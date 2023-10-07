@@ -85,7 +85,7 @@ const deleteExercise = () => {
                         v-model="exerciseForm.name"
                         required
                         placeholder="Name" 
-                        class="border-b-0 capitalize mt-0 p-0 w-full placeholder:text-gray-400 py-2"
+                        class="border-b-0 capitalize mt-0 p-0 w-full lg:text-xl placeholder:text-gray-400 py-2"
                     />
                 </div>
 
@@ -95,14 +95,14 @@ const deleteExercise = () => {
                         type="text"
                         v-model="exerciseForm.sets"
                         placeholder="Sets" 
-                        class="border-b-0 capitalize mt-0 p-0 w-full placeholder:text-gray-400 text-xs py-2"
+                        class="border-b-0 capitalize mt-0 p-0 w-full placeholder:text-gray-400 text-xs lg:text-xl py-2"
                     />
                     <FormInput
                         id="reps"
                         type="text"
                         v-model="exerciseForm.reps"
                         placeholder="Reps" 
-                        class="border-b-0 capitalize mt-0 p-0 w-full placeholder:text-gray-400 text-xs py-2"
+                        class="border-b-0 capitalize mt-0 p-0 w-full placeholder:text-gray-400 text-xs py-2 lg:text-xl"
                     />
                 </div>
 
@@ -112,7 +112,7 @@ const deleteExercise = () => {
                         type="number"
                         v-model="exerciseForm.percentage"
                         placeholder="%" 
-                        class="border-b-0 capitalize mt-0 p-0  text-center w-full placeholder:text-gray-400 text-xs py-2"
+                        class="border-b-0 capitalize mt-0 p-0  text-center w-full placeholder:text-gray-400 text-xs py-2 lg:text-xl"
                     />
                 </div>
 
@@ -122,14 +122,14 @@ const deleteExercise = () => {
                         type="number"
                         v-model="exerciseForm.weight"
                         placeholder="kg" 
-                        class="border-b-0 capitalize mt-0 p-0 w-full placeholder:text-gray-400 py-2"
+                        class="border-b-0 capitalize mt-0 p-0 w-full placeholder:text-gray-400 py-2 lg:text-xl text-right"
                     />
                 </div>
-                <div class="w-full text-sm flex justify-between">
-                    <button type="submit" class="hover:underline">
+                <div class="w-full text-sm md:text-lg lg:text-xl flex justify-between">
+                    <button type="submit" class="hover:underline border-t">
                         Save
                     </button>
-                    <button @click="deleteExercise" type="button" class="text-red-700 hover:underline font-bold">
+                    <button @click="deleteExercise" type="button" class="text-red-700 hover:underline font-bold border-t">
                         Delete
                     </button>
                 </div>
