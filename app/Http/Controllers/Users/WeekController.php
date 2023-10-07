@@ -6,6 +6,8 @@ use App\Models\Users\Week;
 use App\Http\Requests\StoreWeekRequest;
 use App\Http\Requests\UpdateWeekRequest;
 use App\Http\Controllers\Controller;
+use Inertia\Inertia;
+use App\Models\Users\Workout;
 
 class WeekController extends Controller
 {
@@ -32,7 +34,7 @@ class WeekController extends Controller
     {
         $data = $request->validated();
 
-        Week::create($data);
+        Week::create($data);        
     }
 
     /**
@@ -64,6 +66,6 @@ class WeekController extends Controller
      */
     public function destroy(Week $week)
     {
-        //
+        $week->delete();
     }
 }

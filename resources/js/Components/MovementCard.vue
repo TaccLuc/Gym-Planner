@@ -42,7 +42,7 @@ const deleteMov = () => {
 
 <template>
 
-    <div class="flex justify-between text-xl rounded flex-wrap bg-white bg-opacity-40 p-1 mb-2">
+    <div class="flex justify-between text-xl rounded flex-wrap bg-white bg-opacity-10 p-3 mb-2">
 
         <!-- Card -->
         <template v-if="edit == false">

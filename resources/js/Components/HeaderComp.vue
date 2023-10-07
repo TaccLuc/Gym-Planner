@@ -18,6 +18,9 @@ const hidden = ref(true);
 const menuToggle = () => {
     hidden.value = !hidden.value;
 };
+const menuShow = () => {
+    hidden.value = false;
+}
 
 const addWO = ref (false);
 const WOToggle = () => {
@@ -59,7 +62,7 @@ router.on('success', () => {
 </script>
 
 <template>
-    <header class="bg-black  text-white z-10 lg:h-screen lg:relative lg:border-e-2 lg:border-black lg:border-opacity-60">
+    <header class="bg-black text-white z-10 lg:h-screen lg:relative lg:border-e-2 lg:border-white lg:border-opacity-60">
 
         <div class="flex justify-between items-center border-b-2 border-black border-opacity-60 px-4 py-3 h-[120px] lg:justify-center lg:py-5 lg:h-[200px]">
 
@@ -122,7 +125,7 @@ router.on('success', () => {
 
                     <!-- Workouts cycle -->
                     <NavLi v-for="workout in workoutsList" :key="workout.id" :class="{'hidden' : hiddenNav, 'block' : !hiddenNav, 'bg-red-700' : workout.slug == url, 'bg-opacity-40' : workout.slug == url}" class="overflow-hidden" >
-                        <Link @click="menuToggle" :href="route('workouts.show', workout.slug)">                            
+                        <Link @click="menuShow" :href="route('workouts.show', workout.slug)">                            
                             <div class="flex">
                                 <span class="grow">
                                     {{ workout.name }}

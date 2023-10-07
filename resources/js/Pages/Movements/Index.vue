@@ -54,7 +54,7 @@ const submit = () => {
 
         <div class="w-full h-full flex justify-center overflow-auto">
             <div class="p-2 w-11/12 lg:w-2/4 ">
-                <button v-if="add == false" @click="enableAdd" class="block w-full mb-4 text-3xl text-center border border-white py-1 rounded bg-white bg-opacity-10 hover:bg-white hover:bg-opacity-50 hover:text-black">
+                <button v-if="add == false" @click="enableAdd" class="block w-full mb-4 text-3xl text-center border border-white py-1 rounded bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-60 hover:text-black">
                     Add a PR
                 </button>
                 <form v-else @submit.prevent="submit">
