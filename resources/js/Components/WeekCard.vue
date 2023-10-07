@@ -41,10 +41,10 @@ const deleteWeek = () => {
             <div class="lg:w-full">
                 <span class="lg:text-3xl">
                 Week {{ data.index + 1 }}
-                <button @click="deleteWeek" class="ms-1">
-                    <i class="fa-solid fa-xmark text-red-700"></i>
-                </button>
-            </span>
+                    <button @click="deleteWeek" class="ms-1">
+                        <i class="fa-solid fa-xmark text-red-700"></i>
+                    </button>
+                </span>
             </div>
             <button @click="addDay" class="text-sm lg:text-lg hover:underline">
                 <i class="fa-solid fa-plus text-red-700"></i>
@@ -54,7 +54,7 @@ const deleteWeek = () => {
 
         <template v-if="filteredDays">
             <div class="lg:flex lg:flex-wrap ">
-                <div v-for="(day, index) in filteredDays" :key="days.id" class="w-full px-2 xl:w-2/4">
+                <div v-for="(day, index) in filteredDays" :key="days.id" class="w-full px-2 xl:w-2/6">
 
                     <DayCard :day="day" :index="index" :exercises="data.exercises" />
 

@@ -80,7 +80,8 @@ class ExerciseController extends Controller
      */
     public function update(UpdateExerciseRequest $request, Exercise $exercise)
     {
-        //
+        $data = $request->validated();
+        $exercise->update($data);
     }
 
     /**
@@ -88,6 +89,6 @@ class ExerciseController extends Controller
      */
     public function destroy(Exercise $exercise)
     {
-        //
+        $exercise->delete();
     }
 }

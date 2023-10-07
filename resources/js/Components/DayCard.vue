@@ -1,4 +1,5 @@
 <script setup>
+import Exercise from './Exercise.vue';
 import FormInput from '../Components/FormInput.vue';
 import { useForm, router } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
@@ -14,6 +15,7 @@ const data = defineProps({
 const hidden = ref(true);
 const menuToggle = () => {
     hidden.value = !hidden.value;
+    exerciseForm.reset();
 };
 
 // DELETE DAY
@@ -114,10 +116,10 @@ const filteredExercises = computed(() =>
 
                     
 
-                    <button type="submit" class="hover:underline me-8">
+                    <button type="submit" class="hover:underline me-8 text-red-700">
                         Add
                     </button>
-                    <button @click="menuToggle" class="hover:underline">
+                    <button @click="menuToggle" type="reset" class="hover:underline">
                         Cancel
                     </button>
                 </form>
@@ -127,16 +129,19 @@ const filteredExercises = computed(() =>
            <template v-else>
                 <button @click="menuToggle" class="py-1 hover:underline">
                     <span class="text-red-700">
-                        -
+                        <i class="fa-solid fa-plus text-red-700"></i>
                     </span>
                     Add exercise
                 </button>
+                <span class="italic text-xs ms-2">
+                    (click its name to modify)
+                </span>
            </template>
 
            <!-- Exercises Cycle -->
            <div v-for="exercise in filteredExercises">
 
-            {{ exercise.name }}
+                <Exercise :exercise="exercise" :day="data.day.id" />
 
            </div>
 

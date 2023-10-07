@@ -29,7 +29,6 @@ class StoreExerciseRequest extends FormRequest
             'percentage' => 'nullable|numeric',
             'weight' => 'nullable|numeric',
             'day_id' => 'required'
-
         ];
     }
 }
