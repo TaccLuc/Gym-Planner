@@ -1,4 +1,5 @@
 <script setup>
+import DayCard from './DayCard.vue';
 import { useForm, router } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
@@ -35,7 +36,7 @@ const deleteWeek = () => {
 <template>
 
     <div class="border rounded p-1 mb-4">
-        <div class="flex justify-between flex-wrap lg:justify-start">
+        <div class="flex justify-between flex-wrap lg:justify-start mb-4">
             <div class="lg:w-full">
                 <span class="lg:text-3xl">
                 Week {{ data.index + 1 }}
@@ -51,10 +52,12 @@ const deleteWeek = () => {
         </div>
 
         <template v-if="filteredDays">
-            <div v-for="(day, index) in filteredDays" :key="days.id" class="w-full px-2">
+            <div class="lg:flex lg:flex-wrap ">
+                <div v-for="(day, index) in filteredDays" :key="days.id" class="w-full px-2 xl:w-2/4">
 
-                Day {{ index + 1 }}
+                    <DayCard :day="day" :index="index" />
 
+                </div>
             </div>
         </template>
     </div>

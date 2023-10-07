@@ -65,6 +65,6 @@ class DayController extends Controller
      */
     public function destroy(Day $day)
     {
-        //
+        $day->delete();
     }
 }
