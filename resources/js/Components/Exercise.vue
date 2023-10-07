@@ -44,7 +44,7 @@ const deleteExercise = () => {
 
 <template>
 
-    <div class="border-t py-3 flex justify-between items-center w-full md:text-lg lg:text-xl gap-1 xl:px-1">
+    <div class="border-t border-white py-3 flex justify-between items-center w-full md:text-lg lg:text-xl gap-1 xl:px-1">
         
         <!-- SHOW EXERCISE -->
         <template v-if="!edit">

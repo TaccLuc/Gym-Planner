@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, router, useForm } from '@inertiajs/vue3';
 import WeekCard from '../../Components/WeekCard.vue';
 import { ref } from 'vue';
+import html2pdf from 'html2pdf.js';
 
 // SHARED DATA
 defineOptions({
@@ -38,12 +39,37 @@ const deleteWorkout = () => {
     router.delete(`/workouts/${data.workout.id}`)
 }
 
+// EXPORT AS PDF
+const exportAsPDF = async () => {
+    const content = document.querySelector('#mainContent');
+
+    const options = {
+        margin: 0,
+        filename: `${data.workout.slug}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 1 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' },
+    };
+
+    const excludedElements = document.querySelectorAll('.ignorePDF');
+      excludedElements.forEach((element) => {
+        element.classList.add('hidden');
+      });
+    
+    await html2pdf().from(content).set(options).save();
+
+    setTimeout(() => {
+        excludedElements.forEach((element) => {
+            element.classList.remove('hidden');
+        });
+    }, 0);
+}
 </script>
 
 <template>
     <Head title="SingleWorkout" />
 
-        <main class="w-full h-full lg:px-20 relative">
+        <main class="w-full h-full lg:px-20 relative" id="mainContent">
 
             <div class="w-full h-min flex justify-center flex-wrap">
 
@@ -55,10 +81,13 @@ const deleteWorkout = () => {
                     </div>
                 </div>
 
-                <!-- ADD A WEEK -->
-                <div class="p-2 w-full flex flex-wrap justify-center lg:justify-around">
+                <!-- BUTTONS -->
+                <div class="p-2 w-full flex flex-wrap justify-center lg:justify-around ignorePDF">
                     <button @click="addWeek" class="mb-4 text-2xl lg:text-3xl text-center border border-white py-1 rounded bg-white bg-opacity-50 px-4 hover:bg-white hover:bg-opacity-60 hover:text-black">
                         Add a week
+                    </button>
+                    <button @click="exportAsPDF" class="mb-4 text-2xl lg:text-3xl text-center border border-white py-1 rounded px-4 hover:bg-white hover:bg-opacity-10 hover:underline">
+                        Download as PDF
                     </button>
                     <button @click="showWindow" class="mb-4 text-lg lg:text-3xl text-center border border-white py-1 rounded bg-red-800 bg-opacity-50 px-4 hover:bg-opacity-80">
                         Delete Workout

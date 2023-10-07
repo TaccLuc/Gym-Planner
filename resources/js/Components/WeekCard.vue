@@ -41,12 +41,12 @@ const deleteWeek = () => {
             <div class="lg:w-full">
                 <span class="lg:text-3xl">
                     Week {{ data.index + 1 }}
-                    <button @click="deleteWeek" class="ms-1">
+                    <button @click="deleteWeek" class="ms-1 ignorePDF">
                         <i class="fa-solid fa-xmark text-red-700"></i>
                     </button>
                 </span>
             </div>
-            <button @click="addDay" class="text-sm lg:text-lg hover:underline">
+            <button @click="addDay" class="text-sm lg:text-lg hover:underline ignorePDF">
                 <i class="fa-solid fa-plus text-red-700"></i>
                 Add Day
             </button>

@@ -53,15 +53,15 @@ const filteredExercises = computed(() =>
 <template>
 
     <div class="mb-6">
-        <div class="border-b text-2xl mb-1 flex justify-between">
+        <div class="border-b border-white text-2xl mb-1 flex justify-between">
             <span>
                 Day {{ index + 1}}
             </span>
-            <button @click="deleteDay" class="ms-1">
+            <button @click="deleteDay" class="ms-1 ignorePDF">
                 <i class="fa-solid fa-xmark text-red-700"></i>
             </button>
         </div>
-
+        
         <!-- Add exercise form -->
         <div>
            <template v-if="!hidden">
@@ -128,13 +128,13 @@ const filteredExercises = computed(() =>
 
            <!-- Toggle add exercise -->
            <template v-else>
-                <button @click="menuToggle" class="py-1 hover:underline">
+                <button @click="menuToggle" class="py-1 hover:underline ignorePDF">
                     <span class="text-red-700">
                         <i class="fa-solid fa-plus text-red-700"></i>
                     </span>
                     Add exercise
                 </button>
-                <span class="italic text-xs ms-2">
+                <span class="italic text-xs ms-2 ignorePDF">
                     (click its name to modify)
                 </span>
            </template>
