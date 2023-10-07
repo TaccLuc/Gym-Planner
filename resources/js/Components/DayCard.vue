@@ -14,7 +14,6 @@ const data = defineProps({
 const hidden = ref(true);
 const menuToggle = () => {
     hidden.value = !hidden.value;
-    console.log(data.exercises);
 };
 
 // DELETE DAY
