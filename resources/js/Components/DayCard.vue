@@ -57,17 +57,13 @@ const allExercises = computed(() => {
     return exercises;
 });
 
-const test = () => {
-    console.log(allExercises);
-}
-
 </script>
 
 <template>
 
     <div class="mb-6">
         <div class="border-b border-white text-2xl mb-1 flex justify-between">
-            <span @click="test">
+            <span>
                 Day {{ index + 1}}
             </span>
             <button @click="deleteDay" class="ms-1 ignorePDF">
