@@ -69,16 +69,6 @@ class WorkoutController extends Controller
             }
         }
 
-        // foreach ($weeks as $week) {
-        //     $days[] = Day::where('week_id', $week->id)->get();
-        // };
-
-        // foreach ($days as $outerArray) {
-        //     foreach ($outerArray as $day) {
-        //         $exercises[] = Exercise::where('day_id', $day->id)->get();
-        //     }
-        // }
-
         return Inertia::render('Workouts/Show', [
             'workout' => $workout,
             'weeks' => $weeks,
