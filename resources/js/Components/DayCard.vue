@@ -43,10 +43,23 @@ const addExercise = () => {
     
 };
 
-// FILTERED EXERCISES
-const filteredExercises = computed(() => 
-    data.exercises[data.index].filter((exercise) => exercise.day_id == data.day.id
-));
+const allExercises = computed(() => {
+
+    const exercises = [];
+    data.exercises.forEach(element => {
+    element.forEach(exercise => {
+        if (exercise.day_id == data.day.id) {
+            exercises.push(exercise);
+            }
+        })
+    });
+
+    return exercises;
+});
+
+const test = () => {
+    console.log(allExercises);
+}
 
 </script>
 
@@ -54,7 +67,7 @@ const filteredExercises = computed(() =>
 
     <div class="mb-6">
         <div class="border-b border-white text-2xl mb-1 flex justify-between">
-            <span>
+            <span @click="test">
                 Day {{ index + 1}}
             </span>
             <button @click="deleteDay" class="ms-1 ignorePDF">
@@ -141,7 +154,7 @@ const filteredExercises = computed(() =>
            </template>
 
            <!-- Exercises Cycle -->
-           <div v-for="exercise in filteredExercises">
+           <div v-for="exercise in allExercises">
 
                 <Exercise :exercise="exercise" :day="data.day.id" />
 

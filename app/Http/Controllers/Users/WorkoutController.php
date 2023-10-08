@@ -55,19 +55,29 @@ class WorkoutController extends Controller
     public function show(String $slug)
     {
         $workout = Workout::where('slug', $slug)->firstOrFail();
-        $weeks = Week::where('workout_id', $workout->id)->get();
+        $weeks = $workout->weeks()->get();
+
         $days = [];
-        $exercises = [];
-
         foreach ($weeks as $week) {
-            $days[] = Day::where('week_id', $week->id)->get();
-        };
+            $days[] = $week->days()->get();
+        }
 
-        foreach ($days as $outerArray) {
-            foreach ($outerArray as $day) {
-                $exercises[] = Exercise::where('day_id', $day->id)->get();
+        $exercises = [];
+        foreach ($days as $array) {
+            foreach ($array as $day) {
+                $exercises[] = $day->exercises()->get();
             }
         }
+
+        // foreach ($weeks as $week) {
+        //     $days[] = Day::where('week_id', $week->id)->get();
+        // };
+
+        // foreach ($days as $outerArray) {
+        //     foreach ($outerArray as $day) {
+        //         $exercises[] = Exercise::where('day_id', $day->id)->get();
+        //     }
+        // }
 
         return Inertia::render('Workouts/Show', [
             'workout' => $workout,

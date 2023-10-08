@@ -1,7 +1,6 @@
 <script setup>
 import DayCard from './DayCard.vue';
 import { useForm, router } from '@inertiajs/vue3';
-import { computed } from 'vue';
 
 // PROPS
 const data = defineProps({
@@ -20,17 +19,15 @@ const addDay = () => {
     router.post('/days', dayForm);
 };
 
-// FILTER DAYS
-const filteredDays = computed(() => 
-    data.days[data.index].filter((day) => day.week_id == data.week.id
-));
-
 // DELETE WEEK
 const deleteWeek = () => {
     router.delete(`/weeks/${data.week.id}`);
     
 }
 
+const test = () => {
+    console.log(data.days[data.index]);
+}
 
 </script>
 
@@ -39,7 +36,7 @@ const deleteWeek = () => {
     <div class="border rounded p-1 mb-4">
         <div class="flex justify-between flex-wrap lg:justify-start mb-4">
             <div class="lg:w-full">
-                <span class="lg:text-3xl">
+                <span class="lg:text-3xl" @click="test">
                     Week {{ data.index + 1 }}
                     <button @click="deleteWeek" class="ms-1 ignorePDF">
                         <i class="fa-solid fa-xmark text-red-700"></i>
@@ -52,9 +49,9 @@ const deleteWeek = () => {
             </button>
         </div>
 
-        <template v-if="filteredDays">
+        <template v-if="data.days[data.index]">
             <div class="lg:flex lg:flex-wrap ">
-                <div v-for="(day, index) in filteredDays" :key="days.id" class="w-full px-2 xl:w-2/6">
+                <div v-for="(day, index) in data.days[data.index]" :key="days.id" class="w-full px-2 xl:w-2/6">
 
                     <DayCard :day="day" :index="index" :exercises="data.exercises" />
 
